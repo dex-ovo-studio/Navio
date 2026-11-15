@@ -1,6 +1,6 @@
 Navio 0.6.0-beta.1 third-party materials
 
-Client changes: https://github.com/poniard-li/Navio
+Client changes: https://github.com/dex-ovo-studio/Navio
 Exact upstream source archives are separate release attachments listed in SOURCE-ARCHIVES.json, including three unmodified Mihomo core revisions. Their GPL license texts accompany this directory. The client LICENSE remains GPL-3.0.
 
 Noto Color Emoji: Copyright 2022 Google Inc. The bundled font retains its embedded SIL OFL 1.1 attribution; NotoColorEmoji-NOTICE.txt explains the provenance boundary, and NotoColorEmoji-OFL.txt contains the full license.

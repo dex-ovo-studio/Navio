@@ -52,7 +52,7 @@
 
 以下为此前版本记录。
 
-每个版本的变更说明、程序、对应源码和校验文件见 [GitHub Releases](https://github.com/poniard-li/Navio/releases)。历史版本是对应时间点的归档，功能、登录方式与构建条件可能不同；请以各自的版本说明为准。
+每个版本的变更说明、程序、对应源码和校验文件见 [GitHub Releases](https://github.com/dex-ovo-studio/Navio/releases)。历史版本是对应时间点的归档，功能、登录方式与构建条件可能不同；请以各自的版本说明为准。
 
 ## 0.6.0-beta.4
 

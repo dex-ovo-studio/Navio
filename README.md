@@ -6,7 +6,7 @@
 
 **Windows x64 · Public Beta 7**
 
-[下载 Navio](https://github.com/poniard-li/Navio/releases/latest) · [使用指南](docs/guide.md) · [更新日志](CHANGELOG.md) · [问题反馈](https://github.com/poniard-li/Navio/issues)
+[下载 Navio](https://github.com/dex-ovo-studio/Navio/releases/latest) · [使用指南](docs/guide.md) · [更新日志](CHANGELOG.md) · [问题反馈](https://github.com/dex-ovo-studio/Navio/issues)
 
 D.E.X Studio
 
@@ -28,7 +28,7 @@ Navio 集成订阅管理、节点选择、分流规则与连接监控，提供�
 
 ## 下载与安装
 
-在 [GitHub Releases](https://github.com/poniard-li/Navio/releases/latest) 获取最新公测版本。
+在 [GitHub Releases](https://github.com/dex-ovo-studio/Navio/releases/latest) 获取最新公测版本。
 
 | 分发形式 | 启动方式                                          |
 | -------- | ------------------------------------------------- |

@@ -37,7 +37,7 @@ vi.mock('electron', () => ({
 }))
 const payload = 'verified archive'
 const portable = {
-  url: 'https://github.com/poniard-li/Navio/releases/download/v1.0.0-beta.6/Navio.zip',
+  url: 'https://github.com/dex-ovo-studio/Navio/releases/download/v1.0.0-beta.6/Navio.zip',
   size: payload.length,
   sha256: createHash('sha256').update(payload).digest('hex')
 }

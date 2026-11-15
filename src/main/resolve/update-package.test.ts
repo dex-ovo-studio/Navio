@@ -58,3 +58,77 @@ it('rejects an untrusted or mismatched artifact before download', () => {
     )
   ).toThrow('地址')
 })
+
+it.each([true, false])('accepts the renamed official repository for portable=%s', (portable) => {
+  const artifact = {
+    url: `https://github.com/dex-ovo-studio/Navio/releases/download/v1.0.0-beta.7/Navio.${portable ? 'zip' : 'exe'}`,
+    sha256: '0'.repeat(64),
+    size: 1
+  }
+  expect(
+    selectUpdateArtifact(
+      {
+        ...artifact,
+        version: '1.0.0',
+        notes: '',
+        artifacts: { portable: artifact, installer: artifact }
+      },
+      portable
+    )
+  ).toEqual(artifact)
+})
+it.each(['dex-ovo-studio-fake', 'poniard-li-fake', 'another-owner'])(
+  'rejects a release from untrusted owner %s',
+  (owner) => {
+    expect(() =>
+      selectUpdateArtifact(
+        {
+          version: '1.0.0',
+          notes: '',
+          url: `https://github.com/${owner}/Navio/releases/download/v1.0.0/Navio.zip`,
+          sha256: '0'.repeat(64),
+          size: 1
+        },
+        true
+      )
+    ).toThrow('地址')
+  }
+)
+
+it.each([true, false])(
+  'canonicalizes legacy release metadata before download for portable=%s',
+  (portable) => {
+    const artifact = {
+      url: `https://github.com/poniard-li/Navio/releases/download/v1.0.0-beta.6/Navio.${portable ? 'zip' : 'exe'}`,
+      sha256: '0'.repeat(64),
+      size: 1
+    }
+    const selected = selectUpdateArtifact(
+      {
+        ...artifact,
+        version: '1.0.0-beta.6',
+        notes: '',
+        artifacts: { portable: artifact, installer: artifact }
+      },
+      portable
+    )
+    expect(selected.url).toBe(artifact.url.replace('/poniard-li/', '/dex-ovo-studio/'))
+    expect(selected.sha256).toBe(artifact.sha256)
+    expect(selected.size).toBe(artifact.size)
+    expect(artifact.url).toContain('/poniard-li/')
+  }
+)
+it.each([
+  'https://example.com/poniard-li/Navio/releases/download/v1/Navio.zip',
+  'https://github.com/poniard-li/Other/releases/download/v1/Navio.zip',
+  'https://github.com/poniard-li/Navio/releases/download/v1/Navio.zip?token=test',
+  'https://github.com/poniard-li/Navio/releases/download/v1/Navio.zip#fragment',
+  'https://user@github.com/poniard-li/Navio/releases/download/v1/Navio.zip'
+])('rejects invalid legacy metadata %s', (url) => {
+  expect(() =>
+    selectUpdateArtifact(
+      { version: '1.0.0', notes: '', url, sha256: '0'.repeat(64), size: 1 },
+      true
+    )
+  ).toThrow('地址')
+})

@@ -2,11 +2,11 @@
 
 Windows x64 · 安装、连接与配置管理
 
-[返回首页](../README.md) · [下载](https://github.com/poniard-li/Navio/releases/latest) · [问题反馈](https://github.com/poniard-li/Navio/issues)
+[返回首页](../README.md) · [下载](https://github.com/dex-ovo-studio/Navio/releases/latest) · [问题反馈](https://github.com/dex-ovo-studio/Navio/issues)
 
 ## 安装与启动
 
-在 [Releases](https://github.com/poniard-li/Navio/releases) 下载 Windows x64 版本：
+在 [Releases](https://github.com/dex-ovo-studio/Navio/releases) 下载 Windows x64 版本：
 
 - **安装版**：运行文件名以 `setup.exe` 结尾的安装包。
 - **免安装版**：完整解压 `portable.zip`，再运行 `Navio.exe`。不要单独移动程序文件。
@@ -52,4 +52,4 @@ Windows x64 · 安装、连接与配置管理
 
 ## 问题反馈
 
-在 [Issues](https://github.com/poniard-li/Navio/issues) 提供软件版本、Windows 版本、复现步骤和错误提示。上传日志或截图前，请移除订阅地址、节点密码、令牌和账号信息。安全漏洞请按 [SECURITY.md](../SECURITY.md) 报告。
+在 [Issues](https://github.com/dex-ovo-studio/Navio/issues) 提供软件版本、Windows 版本、复现步骤和错误提示。上传日志或截图前，请移除订阅地址、节点密码、令牌和账号信息。安全漏洞请按 [SECURITY.md](../SECURITY.md) 报告。

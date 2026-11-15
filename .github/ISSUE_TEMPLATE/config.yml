@@ -2,7 +2,7 @@ blank_issues_enabled: false
 contact_links:
   - name: '使用说明'
     about: '查看 Navio 使用说明与已知限制'
-    url: 'https://github.com/poniard-li/Navio#readme'
+    url: 'https://github.com/dex-ovo-studio/Navio#readme'
   - name: '版本下载'
     about: '下载 Navio 并查看版本更新内容'
-    url: 'https://github.com/poniard-li/Navio/releases'
+    url: 'https://github.com/dex-ovo-studio/Navio/releases'

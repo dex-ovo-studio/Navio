@@ -5,7 +5,7 @@
   "type": "module",
   "main": "./out/main/index.js",
   "author": "D.E.X Studio and Clash Party contributors",
-  "homepage": "https://github.com/poniard-li/Navio",
+  "homepage": "https://github.com/dex-ovo-studio/Navio",
   "scripts": {
     "check:distribution": "node scripts/check-distribution.cjs",
     "test": "vitest run",

@@ -112,7 +112,7 @@ describe('restricted D.E.X theme IPC adapter', () => {
     expect(mocks.chromiumRequest).toHaveBeenNthCalledWith(
       1,
       expect.objectContaining({
-        url: 'https://github.com/poniard-li/Navio/releases/download/v1.0.0-beta.7/Navio-Theme-aurora-1.json',
+        url: 'https://github.com/dex-ovo-studio/Navio/releases/download/v1.0.0-beta.7/Navio-Theme-aurora-1.json',
         redirect: 'manual',
         credentials: 'omit',
         useSessionCookies: false

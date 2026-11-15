@@ -16,13 +16,17 @@ export function selectUpdateArtifact(release: UpdateRelease, portable: boolean):
   const artifact = portable ? release.artifacts?.portable || release : release.artifacts?.installer
   if (!artifact) throw new Error('此版本尚未提供安装版更新包，请稍后重试。')
   const url = new URL(artifact.url)
+  // Legacy release metadata is canonicalized before validation and network access.
+  if (url.pathname.startsWith('/poniard-li/Navio/releases/download/')) {
+    url.pathname = url.pathname.replace('/poniard-li/Navio/', '/dex-ovo-studio/Navio/')
+  }
   if (
     url.origin !== 'https://github.com' ||
     url.username ||
     url.password ||
     url.search ||
     url.hash ||
-    !/^\/poniard-li\/Navio\/releases\/download\/[^/]+\/[^/]+$/.test(url.pathname) ||
+    !/^\/dex-ovo-studio\/Navio\/releases\/download\/[^/]+\/[^/]+$/.test(url.pathname) ||
     !url.pathname.toLowerCase().endsWith(portable ? '.zip' : '.exe')
   )
     throw new Error('更新包地址或文件类型无效。')
@@ -33,7 +37,7 @@ export function selectUpdateArtifact(release: UpdateRelease, portable: boolean):
     artifact.size > 1024 ** 3
   )
     throw new Error('更新清单缺少有效的文件校验信息。')
-  return artifact
+  return { ...artifact, url: url.href }
 }
 
 export function isWindowsX64Executable(data: Buffer): boolean {

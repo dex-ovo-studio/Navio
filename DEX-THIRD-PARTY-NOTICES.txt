@@ -21,4 +21,4 @@ Noto Color Emoji 使用 SIL Open Font License 1.1，项目来源：https://githu
 GeoIP、GeoSite 等数据不随程序捆绑，按需下载的数据适用各自来源的条款。
 
 源码与构建
-Navio 对应版本的源码与程序通过 https://github.com/poniard-li/Navio/releases 提供。构建步骤见 DEX-BUILD.txt；第三方许可全文、精确版本及源码获取方式见 third-party/README.txt。
+Navio 对应版本的源码与程序通过 https://github.com/dex-ovo-studio/Navio/releases 提供。构建步骤见 DEX-BUILD.txt；第三方许可全文、精确版本及源码获取方式见 third-party/README.txt。

@@ -16,7 +16,7 @@ describe('GitHub release asset redirects', () => {
       .mockResolvedValueOnce(new Response('zip'))
     vi.stubGlobal('fetch', fetcher)
     const result = await fetchReleaseAsset(
-      new URL('https://github.com/poniard-li/Navio/releases/download/v0.6.0-beta.1/Navio.zip'),
+      new URL('https://github.com/dex-ovo-studio/Navio/releases/download/v0.6.0-beta.1/Navio.zip'),
       'https://navio.mydex.top',
       AbortSignal.timeout(1000)
     )
