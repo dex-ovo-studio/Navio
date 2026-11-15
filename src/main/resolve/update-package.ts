@@ -22,7 +22,7 @@ export function selectUpdateArtifact(release: UpdateRelease, portable: boolean):
     url.password ||
     url.search ||
     url.hash ||
-    !/^\/poniard-li\/Navio\/releases\/download\/[^/]+\/[^/]+$/.test(url.pathname) ||
+    !/^\/dex-ovo-studio\/Navio\/releases\/download\/[^/]+\/[^/]+$/.test(url.pathname) ||
     !url.pathname.toLowerCase().endsWith(portable ? '.zip' : '.exe')
   )
     throw new Error('更新包地址或文件类型无效。')

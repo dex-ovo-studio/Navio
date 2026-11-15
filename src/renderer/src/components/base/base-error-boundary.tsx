@@ -21,7 +21,7 @@ const ErrorFallback = ({ error }: FallbackProps): React.ReactElement => {
         color="primary"
         variant="flat"
         className="ml-2"
-        onPress={() => open('https://github.com/poniard-li/Navio/issues/new/choose')}
+        onPress={() => open('https://github.com/dex-ovo-studio/Navio/issues/new/choose')}
       >
         GitHub
       </Button>

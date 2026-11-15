@@ -4,7 +4,7 @@ const requestMock = vi.hoisted(() => vi.fn())
 vi.mock('electron', () => ({ net: { request: requestMock } }))
 import { chromiumThemeFetch } from './chromium-theme-fetch'
 const url =
-  'https://github.com/poniard-li/Navio/releases/download/v1.0.0-beta.7/Navio-Theme-aurora-1.json'
+  'https://github.com/dex-ovo-studio/Navio/releases/download/v1.0.0-beta.7/Navio-Theme-aurora-1.json'
 const options = { redirect: 'manual', credentials: 'omit' } as const
 function request(): EventEmitter & {
   abort: ReturnType<typeof vi.fn>

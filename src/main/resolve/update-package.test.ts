@@ -58,3 +58,39 @@ it('rejects an untrusted or mismatched artifact before download', () => {
     )
   ).toThrow('地址')
 })
+
+it.each([true, false])('accepts the renamed official repository for portable=%s', (portable) => {
+  const artifact = {
+    url: `https://github.com/dex-ovo-studio/Navio/releases/download/v1.0.0-beta.7/Navio.${portable ? 'zip' : 'exe'}`,
+    sha256: '0'.repeat(64),
+    size: 1
+  }
+  expect(
+    selectUpdateArtifact(
+      {
+        ...artifact,
+        version: '1.0.0',
+        notes: '',
+        artifacts: { portable: artifact, installer: artifact }
+      },
+      portable
+    )
+  ).toEqual(artifact)
+})
+it.each(['poniard-li', 'dex-ovo-studio-fake', 'another-owner'])(
+  'rejects a release from untrusted owner %s',
+  (owner) => {
+    expect(() =>
+      selectUpdateArtifact(
+        {
+          version: '1.0.0',
+          notes: '',
+          url: `https://github.com/${owner}/Navio/releases/download/v1.0.0/Navio.zip`,
+          sha256: '0'.repeat(64),
+          size: 1
+        },
+        true
+      )
+    ).toThrow('地址')
+  }
+)

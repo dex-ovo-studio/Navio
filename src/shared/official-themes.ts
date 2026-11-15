@@ -56,7 +56,7 @@ export const OFFICIAL_THEME_CATEGORIES: [OfficialThemeCategory, string][] = [
   ['collab', '联名']
 ]
 export const OFFICIAL_THEME_RELEASE =
-  'https://github.com/poniard-li/Navio/releases/download/v1.0.0-beta.7/'
+  'https://github.com/dex-ovo-studio/Navio/releases/download/v1.0.0-beta.7/'
 export const OFFICIAL_THEMES: OfficialThemeDefinition[] = [
   {
     id: 'navio-liquid',

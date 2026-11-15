@@ -54,7 +54,7 @@ describe('official theme packages', () => {
         .mockResolvedValueOnce(new Response(bytes))
     expect(await downloadOfficialPackage('navio-aurora', fetcher)).toEqual(bytes)
     expect(String(fetcher.mock.calls[0][0])).toBe(
-      'https://github.com/poniard-li/Navio/releases/download/v1.0.0-beta.7/Navio-Theme-aurora-1.json'
+      'https://github.com/dex-ovo-studio/Navio/releases/download/v1.0.0-beta.7/Navio-Theme-aurora-1.json'
     )
     expect(fetcher.mock.calls[0][1]).toMatchObject({ redirect: 'manual', credentials: 'omit' })
   })
