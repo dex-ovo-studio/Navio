@@ -1,4 +1,9 @@
-<p align="center"><img align="top" src="https://raw.githubusercontent.com/dex-ovo-studio/Navio/main/.github/assets/ui/hero.svg" alt="Navio — 让连接与日常管理更清晰。 / Windows x64 · 1.0.0-beta.7 · 公开测试 / Public beta" width="100%"><a href="https://github.com/dex-ovo-studio/Navio/releases/tag/v1.0.0-beta.7"><img align="top" src="https://raw.githubusercontent.com/dex-ovo-studio/Navio/main/.github/assets/ui/action-1.svg" alt="版本与下载 / Release notes &amp; downloads" width="33.33%"></a><a href="https://github.com/dex-ovo-studio/Navio/blob/main/docs/guide.md"><img align="top" src="https://raw.githubusercontent.com/dex-ovo-studio/Navio/main/.github/assets/ui/action-2.svg" alt="使用指南 / Installation &amp; user guide" width="33.33%"></a><a href="https://github.com/dex-ovo-studio/DEX-Studio-Software-Status"><img align="top" src="https://raw.githubusercontent.com/dex-ovo-studio/Navio/main/.github/assets/ui/action-3.svg" alt="软件状态 / Software status &amp; support" width="33.33%"></a><img align="top" src="https://raw.githubusercontent.com/dex-ovo-studio/Navio/main/.github/assets/ui/experience.svg" alt="订阅与节点 · 代理与规则 · 连接与日志 · 主题与备份 / 安装与登录 · 导入配置 · 选择连接" width="100%"><a href="https://github.com/dex-ovo-studio/DEX-Studio-Software-Status"><img align="top" src="https://raw.githubusercontent.com/dex-ovo-studio/Navio/main/.github/assets/ui/footer.svg" alt="D.E.X Studio · 软件状态与下载 / Software status and downloads" width="100%"></a></p>
+<p><img align="top" src="https://raw.githubusercontent.com/dex-ovo-studio/Navio/main/.github/assets/ui/v2/hero.svg" alt="Navio — 让连接与日常管理更清晰。 / Windows x64 · 1.0.0-beta.7 · 公开测试 / Public beta" width="100%"><a href="https://github.com/dex-ovo-studio/Navio/releases/tag/v1.0.0-beta.7"><img align="top" src="https://raw.githubusercontent.com/dex-ovo-studio/Navio/main/.github/assets/ui/v2/action-1.svg" alt="版本与下载 / Release notes &amp; downloads" width="34.4444%"></a><a href="https://github.com/dex-ovo-studio/Navio/blob/main/docs/guide.md"><img align="top" src="https://raw.githubusercontent.com/dex-ovo-studio/Navio/main/.github/assets/ui/v2/action-2.svg" alt="使用指南 / Installation &amp; user guide" width="31.1111%"></a><a href="https://github.com/dex-ovo-studio/DEX-Studio-Software-Status"><img align="top" src="https://raw.githubusercontent.com/dex-ovo-studio/Navio/main/.github/assets/ui/v2/action-3.svg" alt="软件状态 / Software status &amp; support" width="34.4444%"></a><img align="top" src="https://raw.githubusercontent.com/dex-ovo-studio/Navio/main/.github/assets/ui/v2/content.svg" alt="Beta 7 系统代理恢复存在已知问题；升级前备份并保留原有代理配置。 / Known proxy restoration issue. 订阅与节点 · 代理与规则 · 连接与日志 · 主题与备份" width="100%"><a href="https://github.com/dex-ovo-studio/DEX-Studio-Software-Status"><img align="top" src="https://raw.githubusercontent.com/dex-ovo-studio/Navio/main/.github/assets/ui/v2/footer.svg" alt="D.E.X Studio · 所有软件 / All software" width="100%"></a></p>
+
+<a id="版本与下载--releases--downloads"></a>
+
+<details>
+<summary>展开使用说明与链接 / Read details & links</summary>
 
 <a id="版本与下载--releases--downloads"></a>
 
@@ -33,5 +38,7 @@ Windows x64 · 1.0.0-beta.7 · 公开测试 / Public beta
 Navio 由 D.E.X Studio 开发，基于 [Clash Party](https://github.com/mihomo-party-org/clash-party) 与 [Mihomo](https://github.com/MetaCubeX/mihomo)，采用 [GPL-3.0-only](https://github.com/dex-ovo-studio/Navio/blob/main/LICENSE)。
 
 [第三方声明](https://github.com/dex-ovo-studio/Navio/blob/main/DEX-THIRD-PARTY-NOTICES.txt) · [对应源码](https://github.com/dex-ovo-studio/Navio/tree/main) · [构建与贡献](https://github.com/dex-ovo-studio/Navio/blob/main/CONTRIBUTING.md) · [安全报告](https://github.com/dex-ovo-studio/Navio/blob/main/SECURITY.md)
+
+</details>
 
 </details>
