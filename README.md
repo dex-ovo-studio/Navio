@@ -4,6 +4,8 @@
 
 # Navio
 
+**简体中文** · [English](README.en.md)
+
 **让连接、配置与日常管理更清晰。**
 
 Windows x64 代理管理客户端 · **1.0.0-beta.7 公开测试版**
