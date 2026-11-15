@@ -1,17 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="320" viewBox="0 0 1280 320" role="img" aria-label="Navio — Your connections. Clearly organized.">
-  <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#101D35"/><stop offset="1" stop-color="#09111F"/></linearGradient>
-    <linearGradient id="line"><stop stop-color="#68DED2"/><stop offset="1" stop-color="#5387F5"/></linearGradient>
-  </defs>
-  <rect width="1280" height="320" rx="24" fill="url(#bg)"/>
-  <path d="M900 0v320M980 0v320M1060 0v320M1140 0v320M1220 0v320M860 80h420M860 160h420M860 240h420" stroke="#26354A" stroke-opacity=".5"/>
-  <circle cx="1080" cy="160" r="107" fill="none" stroke="#263D5B"/>
-  <circle cx="1080" cy="160" r="76" fill="none" stroke="#355879"/>
-  <path d="M1004 211V109l152 102V109" fill="none" stroke="url(#line)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
-  <circle cx="1004" cy="109" r="8" fill="#68DED2"/><circle cx="1156" cy="211" r="8" fill="#5387F5"/>
-  <rect x="56" y="56" width="36" height="4" rx="2" fill="#68DED2"/>
-  <text x="108" y="64" fill="#A8BDDA" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="600" letter-spacing="3">WINDOWS PROXY CLIENT</text>
-  <text x="56" y="164" fill="#F5F8FF" font-family="Segoe UI,Arial,sans-serif" font-size="72" font-weight="700" letter-spacing="-2">Navio</text>
-  <text x="60" y="213" fill="#B6C7E0" font-family="Segoe UI,Arial,sans-serif" font-size="23">Your connections. Clearly organized.</text>
-  <text x="60" y="274" fill="#68DED2" font-family="Segoe UI,Arial,sans-serif" font-size="13" letter-spacing="3">D.E.X STUDIO  /  SOFTWARE &amp; EXPERIENCES</text>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="320" viewBox="0 0 1280 320" role="img" aria-label="Navio — D.E.X Studio"><defs><linearGradient id="back" x2="1" y2="1"><stop stop-color="#12171f"/><stop offset="1" stop-color="#24202a"/></linearGradient></defs><rect width="1280" height="320" rx="24" fill="url(#back)"/><path d="M1010 0 810 320M1160 0 960 320M1310 0 1110 320" fill="none" stroke="#6dd5bd" opacity=".08"/><circle cx="1090" cy="160" r="120" fill="none" stroke="#6dd5bd" opacity=".12"/><circle cx="1090" cy="160" r="84" fill="none" stroke="#6dd5bd" opacity=".08"/><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" x="80" y="78" width="164" height="164"><defs><linearGradient id="surface" x1="20" y1="8" x2="110" y2="128" gradientUnits="userSpaceOnUse"><stop stop-color="#22354B"/><stop offset="1" stop-color="#101B2D"/></linearGradient></defs><rect x="4" y="4" width="120" height="120" rx="28" fill="url(#surface)"/><path d="M30 94V38C30 31 38 28 43 33L84 75V34H99V90C99 97 91 100 86 95L45 53V94Z" fill="#ECF7F4"/><path d="M84 34H99V90C99 97 91 100 86 95L72 81L84 69V75Z" fill="#6DD5BD"/></svg><path d="M291 82V238" stroke="#ffffff" opacity=".1"/><text x="333" y="91" fill="#6dd5bd" font-family="Segoe UI,Arial,sans-serif" font-size="15" letter-spacing="4">D.E.X STUDIO</text><text x="330" y="166" fill="#f7f5f3" font-family="Segoe UI,Arial,sans-serif" font-weight="650" font-size="56">Navio</text><text x="333" y="212" fill="#c6c3ca" font-family="Segoe UI,Arial,sans-serif" font-size="21">Clearer connections. Everyday control.</text><path d="M333 253H513" stroke="#6dd5bd" stroke-width="3"/></svg>
