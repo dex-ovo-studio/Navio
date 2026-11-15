@@ -1,1 +1,10 @@
 * text=auto eol=lf
+
+# Development records are not part of source distribution archives.
+AGENTS.md export-ignore
+Navio-验证记录.txt export-ignore
+Navio-使用说明.txt export-ignore
+docs/** export-ignore
+docs/guide.md -export-ignore
+design/ export-ignore
+scripts/service/IMPLEMENTATION-BOUNDARY.md export-ignore

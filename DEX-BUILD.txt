@@ -1,75 +1,49 @@
-Navio — Windows 公测版构建说明
+Navio — Windows x64 构建
 
-工程来源与构建目标
-Navio 基于 Clash Party 2.0.4 源码开发，使用独立的品牌、交互和数据目录，保留上游 LICENSE。当前构建目标为 Windows 公测版；macOS/Linux 发行版尚未完成适配和验证。
+环境
+Windows x64、Node.js 24+、package.json 指定版本的 pnpm。
+客户端源码基于 Clash Party 2.0.4；内核固定为 Mihomo v1.19.32。
 
-内核固定为 Mihomo v1.19.32，直接使用参考便携包中的二进制文件，未修改内核。更换内核版本或文件后，需要记录来源、校验值并重新验证兼容性。
+1. 准备固定运行资源
+下载并解压 Clash Party 2.0.4 Windows x64 portable：
+https://github.com/mihomo-party-org/clash-party/releases/tag/v2.0.4
+https://github.com/mihomo-party-org/clash-party/releases/download/v2.0.4/clash-party-windows-2.0.4-x64-portable.7z
 
-源码包内容
-源码包保留客户端源文件、锁文件、构建脚本、上游 LICENSE 与本说明。
-源码包不包含 node_modules、extra、out；它们分别是安装依赖、运行资源和编译结果。
+归档 SHA-256：182063a60b9a06535d176742d627f8b8c95a99aae85fc8752c880efee7da5157
+resources/app.asar SHA-256：801ad4a2dfd770ae4007879d8cf2d5e4f19dbfc92b02703b30b908f846e75abe
+内核与原生模块校验值见 PINNED-RESOURCES.json。
 
-构建准备
-1. 在 Windows 上准备 Node.js 24+、pnpm，并将源码包解压到可写目录。
-2. 准备 Clash Party 2.0.4 Windows x64 portable 的解压目录。上游发布入口为 https://github.com/mihomo-party-org/clash-party/releases/tag/v2.0.4 。参考包必须含 resources/app.asar、resources/files、resources/sidecar 与 Clash Party.exe。resources/app.asar 的 SHA-256 必须为 801ad4a2dfd770ae4007879d8cf2d5e4f19dbfc92b02703b30b908f846e75abe；内核与原生模块必须匹配 PINNED-RESOURCES.json。仅版本名称相同不足以通过验证。
-   官方便携包：https://github.com/mihomo-party-org/clash-party/releases/download/v2.0.4/clash-party-windows-2.0.4-x64-portable.7z
-   官方发布记录及 .sha256 文件公布的归档 SHA-256：182063a60b9a06535d176742d627f8b8c95a99aae85fc8752c880efee7da5157（175672213 字节）。该值来自官方发布记录和校验文件；解压后仍需通过本项目的资源校验。
-3. 安装锁定依赖，不运行安装生命周期脚本：
+将参考包中的 resources/files、resources/sidecar 分别复制为项目的 extra/files、extra/sidecar。保留资源内容和目录结构；不要用其他版本的资源替换。
 
-   pnpm install --ignore-scripts --frozen-lockfile
+2. 安装依赖
+在项目目录执行：
+    pnpm install --ignore-scripts --frozen-lockfile
 
-4. 将该便携程序的 resources/files 与 resources/sidecar 分别复制到本工程 extra/files 与 extra/sidecar，保留目录结构和资源原内容。
-5. 编译客户端：
+3. 编译
+    node scripts/build-native.mjs
 
-   pnpm exec electron-vite build
+输出位于 out/main、out/preload、out/renderer。该入口需要 Node.js 24+；配置与分进程构建选项见 NATIVE-BUILD.txt。
 
-6. 运行固定资源打包脚本；下面三个参数依次是便携程序解压目录、新产物目录、工作暂存目录，均建议使用绝对路径：
+4. 生成安装包与便携包
+    node scripts/release-windows.cjs "<参考包目录>" "<新产物目录>" "<新暂存目录>"
 
-   node scripts/package-pinned.cjs "<已解压Party便携目录>" "<新产物目录>" "<工作暂存目录>"
+产物目录、暂存目录必须不存在，并与源码、参考包及彼此分开。命令执行完整编译和打包，生成 Windows x64 setup.exe、portable.zip、SHA256SUMS.txt 和 RELEASE-MANIFEST.json；不会安装或发布程序。
 
-新产物目录必须与参考程序目录分开。打包脚本会检查输入资源，失败时按输出提示处理。
+首次打包会下载固定版本的 NSIS 与归档工具。服务宿主由 Windows 自带的 .NET Framework 编译器编译。第三方运行时、内核和原生模块使用已核验的固定二进制。
 
-同时生成 Windows 安装版和便携版
-完成上面的依赖和固定资源准备后，在 Windows 上运行：
+如只需生成解压后的程序目录，可在完成编译后运行：
+    node scripts/package-pinned.cjs "<参考包目录>" "<新程序目录>" "<新暂存目录>"
 
-   node scripts/release-windows.cjs "<已解压Party便携目录>" "<新发布目录>" "<新工作暂存目录>"
+仅当 out 来自相同源码的完整编译时，release-windows.cjs 可使用 --skip-build。
 
-此命令使用 Node.js 24+ 编译完整客户端，再以固定运行时生成 Navio-v<版本>-Windows-x64-setup.exe 和 Navio-v<版本>-Windows-x64-portable.zip，并写入 SHA256SUMS.txt、RELEASE-MANIFEST.json。发布目录和工作暂存目录必须不存在，且与源码、参考包和彼此完全分开；失败后保留工作目录供检查，重试时使用新的目录。
-打包时会使用 Windows 自带 .NET Framework 编译器编译 src/native/windows-service/NavioService.cs，并核对固定内核哈希。也可先运行 node scripts/build-windows-service.cjs 编译和检查服务宿主；此步骤不安装服务或申请管理员权限。
-仅当 out 已由同一版本的完整源码编译时，才可追加 --skip-build 复用编译结果。该选项主要用于打包验证，不会检查源码是否比 out 更新。
-安装版仅支持当前 Windows 用户，配置保存在 %APPDATA%\DEX-STUDIO-NEXT；卸载默认保留配置。安装器拒绝包含 PORTABLE 或 DEX-STUDIO-NEXT 的目标目录，并要求运行中的 Navio 先从系统托盘正常退出，不会强制结束进程。卸载时仅清理执行路径与本次安装完全匹配的自启动项；升级保留自启动设置。若系统权限阻止清理，卸载详情会给出提示，可在 Windows 中检查并关闭残留的自启动项。
-便携版在程序同级保留 PORTABLE 标记，配置写入同级 DEX-STUDIO-NEXT。两种格式使用相同的程序、应用归档和固定内核；构建过程不会启动 Navio 或安装应用。
-首次生成安装器时，electron-builder 会下载其固定版本的 NSIS 与归档工具。发行格式检查及路径隔离测试可单独执行：
+5. 检查
+    pnpm run format:check
+    pnpm run lint:check
+    pnpm run typecheck
+    node --test scripts/release-windows.test.cjs scripts/release-windows-safety.test.cjs
 
-   node --test scripts/release-windows.test.cjs
+运行测试使用独立配置目录。实际安装、升级、系统代理和 TUN 需在 Windows 测试环境中验证。
 
-构建边界
-此流程编译 Navio 主进程、preload 和界面，使用固定哈希的上游 Electron 运行时、运行依赖及原生资源打包。第三方二进制不在此流程中重新编译。src/native/sysproxy 提供 JS/类型封装，Windows 原生 .node 文件来自参考包。若上游不再提供匹配文件，需要另行取得同哈希资源，或更新构建流程并重新验证；客户端源码包本身不包含这些资源。
-构建路径由命令参数指定。D.E.X 账号服务器、短信/邮件配置、盲盒网站和生产数据不在客户端源码包中。
-
-固定资源策略
-此流程不执行上游 prepare 下载步骤，不自动拉取 latest/alpha 或随时间变化的内核。extra 资源来自上述已解压 resources/{files,sidecar}。不要改用会自动触发下载的上游构建/prepare 命令来替代这里的固定资源流程。需要更新依赖时通过 pnpm 更新锁文件；需要更新内核时另行选择明确版本并保存来源和校验记录。
-
-默认身份与运行设置
-• 应用品牌：Navio；协议：dexstudio://。
-• 常规用户数据：%APPDATA%\DEX-STUDIO-NEXT；开发运行也不读取 Party 数据。
-• 便携数据：程序同级 DEX-STUDIO-NEXT；不复用上游 data 文件夹。
-• DEX_USER_DATA 可指定独立验证目录，并优先于常规/便携数据路径。
-• 默认混合端口 17890、SOCKS 端口 17891、HTTP 端口 17892。
-• 首次启动选择标准/简易模式并保存，完成或跳过引导后不重复自动播放；sysProxy.enable=false、tun.enable=false、allow-lan=false。
-• 初始 autoCheckUpdate=true、silentUpdate=false；应用更新与订阅更新是不同设置。
-
-验证配置
-DEX_TEST_MODE=1 跳过托盘、协议注册以及部分启动后台流程。代理、TUN 和权限请求仍使用正常实现。
-冒烟测试建议使用空的 DEX_USER_DATA。需要关闭外网自动任务时，另设 useSubStore=false、autoUpdateProfileOnStart=false、showTraffic=false。网络信息页仍会查询网络信息，但不显示坐标；隔离测试时按需替换查询目标。
-单元测试使用模拟 OS 接口。订阅、TUN、路由、系统代理、自启动及多客户端并行运行，需要在对应目标环境中单独验证。各版本的检查结果见 Navio-验证记录.txt。
-
-来源与再分发材料请同时阅读 DEX-THIRD-PARTY-NOTICES.txt、LICENSE，以及包内其他组件许可文件。
-第三方许可全文与固定版本源代码获取方式见 third-party/。开发者构建依赖由 pnpm-lock.yaml 记录；最终运行包中的运行依赖继承固定参考 app.asar，本流程没有把它们替换为当前开发依赖安装目录。
-
-受限 Windows 测试环境补充
-若 electron-vite 的配置打包因上级目录访问受限而失败，可用 Node.js 24+ 运行 node scripts/build-native.mjs；详见 NATIVE-BUILD.txt。此入口不修改权限或依赖，保留原有构建配置和插件。
-
-规则数据库
-0.6 公开分发包不附带历史 GeoIP / ASN / GeoSite / BundleMRS 数据。内核尚未启动时，可在“外部资源 → 下载最新数据库”中获取当前数据，默认来源是 MetaCubeX 的 GitHub 数据发布，请求不包含订阅或节点凭据。内核运行时，请使用内核的数据更新功能。
-依赖缺失数据库的规则可能无法启动。下载失败时，检查网络和资源地址后重试；下载成功后按需重启内核。下载操作不会开启系统代理。
+发布材料
+保留 LICENSE、DEX-THIRD-PARTY-NOTICES.txt、third-party/ 以及与二进制对应的源码、锁文件和构建脚本。内核与第三方源码获取方式见 third-party/README.txt。
+分发包不附带历史 GeoIP / ASN / GeoSite / BundleMRS 数据；用户可在软件内按需下载。

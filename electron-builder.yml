@@ -3,6 +3,12 @@ productName: Navio
 directories:
   buildResources: build
 files:
+  - '!Navio-验证记录.txt'
+  - '!Navio-使用说明.txt'
+  - '!AGENTS.md'
+  - '!docs/**'
+  - 'docs/guide.md'
+  - '!design/**'
   - '!**/.vscode/*'
   - '!src/*'
   - '!aur/*'

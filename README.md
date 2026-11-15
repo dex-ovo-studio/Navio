@@ -1,28 +1,59 @@
+<div align="center">
+
 # Navio
 
-Built by D.E.X Studio · Windows x64 · Public Beta（公测版）
+适用于 Windows 的代理管理客户端
 
-当前版本：**Release 1.0.0 · Public Beta 7**（`1.0.0-beta.7`）。安装包、免安装包和对应源码见 [GitHub Releases](https://github.com/poniard-li/Navio/releases)。
+**Windows x64 · Public Beta 7**
 
-Navio 基于 Clash Party 2.0.4 客户端与 Mihomo 内核开发。上游及第三方来源见 [鸣谢与许可说明](DEX-THIRD-PARTY-NOTICES.txt)，客户端遵循 [GPL-3.0-only](LICENSE)。
+[下载 Navio](https://github.com/poniard-li/Navio/releases/latest) · [使用指南](docs/guide.md) · [更新日志](CHANGELOG.md) · [问题反馈](https://github.com/poniard-li/Navio/issues)
 
-## 使用与构建
+D.E.X Studio
 
-- 安装版：运行 `setup.exe`，本机数据保存在 `%APPDATA%\DEX-STUDIO-NEXT`，卸载时保留。
-- 免安装版：解压完整 `portable.zip` 后运行 `Navio.exe`，本机数据保存在程序旁的 `DEX-STUDIO-NEXT` 目录。
-- 首次使用需要可用的 D.E.X 账号服务。注册、密码或验证码登录、找回密码、绑定和设备管理在软件内完成。Google / GitHub 授权使用系统浏览器。
-- 在“D.E.X 账号”中解除邮箱、手机号或 Google / GitHub 绑定，需要当前密码或已绑定联系方式的验证码；请保留另一种联系方式。解绑后本机继续登录，其他设备需要重新登录。此功能需要 D.E.X Platform 0.7.0-beta.4 及以上版本。
-- 已登录设备在账号服务暂时不可用时保留本机离线使用；订阅和节点凭据不上传 D.E.X 官方云。
-- 构建流程及固定资源来源见 [DEX-BUILD.txt](DEX-BUILD.txt)。测试范围和未验证项见 [Navio-验证记录.txt](Navio-验证记录.txt)。
+</div>
 
-本版重做概览、代理组和主题工坊，增加全局快捷操作面板、独立玻璃材质设置、24 套官方主题和 8 种动态场景。6 套基础主题内置，其余主题首次使用时下载，校验后保存供离线使用。概览流量来自内核与本地统计。保留安装版与免安装版在线更新、可选 TUN 后台服务、订阅冲突处理和外部文件备份。节点异常时可推荐当前策略组内测速通过的节点，优先收藏，确认后切换。账号恢复、同机账号继续登录、旧盲盒账号主动绑定和主题复核需要 D.E.X Platform 0.7.0-beta.5。
+---
 
-旧盲盒桌面端仍需接入统一账号界面；本版提供 Navio 内的绑定入口和服务端适配接口，不改变旧盲盒数据。验证范围见对应版本记录。
+## 产品概览
 
-公开分发包不附带历史 GeoIP / ASN / GeoSite / BundleMRS 数据。内核尚未启动时，可在“外部资源 → 下载最新数据库”中按需获取当前数据，默认从 MetaCubeX 的 GitHub 数据发布下载；这些请求不包含订阅或节点凭据。内核运行期间请使用原有的内核数据更新功能。依赖缺失数据的规则可能暂时无法启动，网络不可达时需检查资源来源后重试。下载成功后按需重启内核；下载失败不会开启系统代理。
+Navio 集成订阅管理、节点选择、分流规则与连接监控，提供标准和简易两种界面模式，支持系统代理与 TUN。
 
-从 0.6.0-beta.5 及更早版本升级到本版，仍需手动更新：先从托盘退出 Navio，安装版运行新版安装程序；免安装版解压到新目录，再复制旧版的 `DEX-STUDIO-NEXT` 数据目录。不要同时运行两个版本，也不要将安装版装入免安装版目录。
+| 功能       | 说明                                           |
+| ---------- | ---------------------------------------------- |
+| 订阅与节点 | 导入和管理配置，切换代理组，收藏节点并检测延迟 |
+| 代理与规则 | 配置系统代理、TUN 和分流规则                   |
+| 连接与日志 | 查看连接状态、流量统计和运行日志               |
+| 主题与外观 | 使用内置主题，或通过主题工坊调整界面外观       |
+| 备份与更新 | 备份、恢复本地配置，并在软件内检查更新         |
 
-Public Beta 6 及之后的版本支持在线更新：确认下载后校验文件，再由用户确认退出更新并自动重启。免安装版将原程序保留在相邻备份目录；安装版更新到原目录并保留用户配置。后台须分别填写安装版 EXE 和免安装版 ZIP 的地址、SHA256 与大小。
+## 下载与安装
 
-从免安装版切换到安装版，可使用本地备份导出和恢复配置，之后重新登录。详细说明见 [Navio-使用说明.txt](Navio-使用说明.txt)。
+在 [GitHub Releases](https://github.com/poniard-li/Navio/releases/latest) 获取最新公测版本。
+
+| 分发形式 | 启动方式                                          |
+| -------- | ------------------------------------------------- |
+| 安装版   | 运行 `setup.exe` 安装程序，按向导完成安装         |
+| 免安装版 | 完整解压 `portable.zip`，运行目录中的 `Navio.exe` |
+
+当前提供 Windows x64 版本。升级前请从系统托盘退出正在运行的 Navio。
+
+## 快速开始
+
+1. 启动 Navio，登录 D.E.X 账号。
+2. 导入订阅地址或本地配置文件。
+3. 选择代理组与节点，按需启用系统代理或 TUN。
+
+Navio 不提供代理线路，订阅及节点需自行配置。首次登录与在线功能需要联网；TUN 首次配置可能需要管理员授权。
+
+安装、升级、数据迁移和常见问题，请参阅[使用指南](docs/guide.md)。
+
+## 文档与支持
+
+- [使用指南](docs/guide.md)：安装、连接、更新与备份。
+- [构建说明](DEX-BUILD.txt)：开发环境、运行资源与打包步骤。
+- [参与开发](CONTRIBUTING.md)：问题反馈与代码贡献。
+- [安全报告](SECURITY.md)：漏洞及安全问题反馈方式。
+
+## 开源与许可
+
+Navio 由 D.E.X Studio 开发，基于 [Clash Party](https://github.com/mihomo-party-org/clash-party) 与 [Mihomo](https://github.com/MetaCubeX/mihomo)。客户端采用 [GPL-3.0-only](LICENSE) 许可；第三方组件的来源与许可见 [第三方声明](DEX-THIRD-PARTY-NOTICES.txt) 和 [third-party](third-party)。

@@ -78,15 +78,18 @@ const hash = (p) => crypto.createHash('sha256').update(fss.readFileSync(p)).dige
   await fs.writeFile(path.join(appStage, 'package.json'), JSON.stringify(pkg, null, 2))
   for (const file of [
     'LICENSE',
+    'SECURITY.md',
+    'README.md',
     'DEX-THIRD-PARTY-NOTICES.txt',
     'DEX-BUILD.txt',
     'NATIVE-BUILD.txt',
     'PINNED-RESOURCES.json',
-    'Navio-使用说明.txt',
-    'Navio-验证记录.txt'
+    'docs/guide.md'
   ]) {
-    if (fss.existsSync(path.join(root, file)))
+    if (fss.existsSync(path.join(root, file))) {
+      await fs.mkdir(path.dirname(path.join(appStage, file)), { recursive: true })
       await fs.copyFile(path.join(root, file), path.join(appStage, file))
+    }
   }
   await fs.mkdir(output, { recursive: true })
   if (fss.existsSync(path.join(root, 'third-party'))) {
@@ -187,15 +190,18 @@ const hash = (p) => crypto.createHash('sha256').update(fss.readFileSync(p)).dige
   )
   for (const file of [
     'LICENSE',
+    'SECURITY.md',
+    'README.md',
     'DEX-THIRD-PARTY-NOTICES.txt',
     'DEX-BUILD.txt',
     'NATIVE-BUILD.txt',
     'PINNED-RESOURCES.json',
-    'Navio-使用说明.txt',
-    'Navio-验证记录.txt'
+    'docs/guide.md'
   ])
-    if (fss.existsSync(path.join(root, file)))
+    if (fss.existsSync(path.join(root, file))) {
+      await fs.mkdir(path.dirname(path.join(output, file)), { recursive: true })
       await fs.copyFile(path.join(root, file), path.join(output, file))
+    }
   console.log(JSON.stringify({ output, version: pkg.version, sidecars: sidecars.length }))
 })().catch((e) => {
   console.error(e)
