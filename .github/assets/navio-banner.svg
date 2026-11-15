@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="320" viewBox="0 0 1280 320" role="img" aria-label="Navio — Your connections. Clearly organized.">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#101D35"/><stop offset="1" stop-color="#09111F"/></linearGradient>
+    <linearGradient id="line"><stop stop-color="#68DED2"/><stop offset="1" stop-color="#5387F5"/></linearGradient>
+  </defs>
+  <rect width="1280" height="320" rx="24" fill="url(#bg)"/>
+  <path d="M900 0v320M980 0v320M1060 0v320M1140 0v320M1220 0v320M860 80h420M860 160h420M860 240h420" stroke="#26354A" stroke-opacity=".5"/>
+  <circle cx="1080" cy="160" r="107" fill="none" stroke="#263D5B"/>
+  <circle cx="1080" cy="160" r="76" fill="none" stroke="#355879"/>
+  <path d="M1004 211V109l152 102V109" fill="none" stroke="url(#line)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="1004" cy="109" r="8" fill="#68DED2"/><circle cx="1156" cy="211" r="8" fill="#5387F5"/>
+  <rect x="56" y="56" width="36" height="4" rx="2" fill="#68DED2"/>
+  <text x="108" y="64" fill="#A8BDDA" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="600" letter-spacing="3">WINDOWS PROXY CLIENT</text>
+  <text x="56" y="164" fill="#F5F8FF" font-family="Segoe UI,Arial,sans-serif" font-size="72" font-weight="700" letter-spacing="-2">Navio</text>
+  <text x="60" y="213" fill="#B6C7E0" font-family="Segoe UI,Arial,sans-serif" font-size="23">Your connections. Clearly organized.</text>
+  <text x="60" y="274" fill="#68DED2" font-family="Segoe UI,Arial,sans-serif" font-size="13" letter-spacing="3">D.E.X STUDIO  /  SOFTWARE &amp; EXPERIENCES</text>
+</svg>
