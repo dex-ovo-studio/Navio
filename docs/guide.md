@@ -1,8 +1,8 @@
-# Navio 使用指南
+<p><img align="top" src="https://raw.githubusercontent.com/dex-ovo-studio/Navio/main/.github/assets/ui/guide.svg" alt="Navio · guide" width="100%"></p>
 
-Windows x64 · 安装、连接与配置管理
+[← Navio](https://github.com/dex-ovo-studio/Navio) · [使用指南](https://github.com/dex-ovo-studio/Navio/blob/main/docs/guide.md) · [版本与下载](https://github.com/dex-ovo-studio/Navio/releases)
 
-[返回首页](../README.md) · [下载](https://github.com/dex-ovo-studio/Navio/releases/latest) · [问题反馈](https://github.com/dex-ovo-studio/Navio/issues)
+[返回 Navio](https://github.com/dex-ovo-studio/Navio) · [下载](https://github.com/dex-ovo-studio/Navio/releases/latest) · [问题反馈](https://github.com/dex-ovo-studio/Navio/issues)
 
 ## 安装与启动
 
@@ -33,6 +33,12 @@ Windows x64 · 安装、连接与配置管理
 卸载安装版会保留配置。从免安装版切换到安装版，建议通过软件的本地备份导出和恢复，随后重新登录。加密备份需要原备份密码才能恢复。
 
 ## 常见问题
+
+### 断开后系统代理未恢复
+
+Beta 7 在部分断开场景下可能没有恢复 Windows 代理设置。请核对 Windows“网络和 Internet → 代理”，保留连接前已有的配置。相关修复尚未包含在当前公开安装包中。
+
+
 
 ### 没有可用节点
 

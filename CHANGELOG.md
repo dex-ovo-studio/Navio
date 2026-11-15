@@ -1,3 +1,7 @@
+<p><img align="top" src="https://raw.githubusercontent.com/dex-ovo-studio/Navio/main/.github/assets/ui/changelog.svg" alt="Navio · changelog" width="100%"></p>
+
+[← Navio](https://github.com/dex-ovo-studio/Navio) · [使用指南](https://github.com/dex-ovo-studio/Navio/blob/main/docs/guide.md) · [版本与下载](https://github.com/dex-ovo-studio/Navio/releases)
+
 ## 1.0.0-beta.7
 
 ### 更新内容

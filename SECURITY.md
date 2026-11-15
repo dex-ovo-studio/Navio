@@ -1,3 +1,7 @@
+<p><img align="top" src="https://raw.githubusercontent.com/dex-ovo-studio/Navio/main/.github/assets/ui/security.svg" alt="Navio · security" width="100%"></p>
+
+[← Navio](https://github.com/dex-ovo-studio/Navio) · [使用指南](https://github.com/dex-ovo-studio/Navio/blob/main/docs/guide.md) · [版本与下载](https://github.com/dex-ovo-studio/Navio/releases)
+
 # 安全问题反馈
 
 当前只维护最新的 Navio Public Beta。旧版保留作历史归档，不保证继续收到安全修复。
@@ -7,5 +11,3 @@
 仓库开启私密漏洞报告后，可使用 [GitHub 私密安全报告](https://github.com/dex-ovo-studio/Navio/security/advisories/new)。若该入口暂不可用，可先提交不包含漏洞细节和敏感资料的 Issue，请维护者提供私密接收方式；不要为了证明问题而公开凭据或攻击真实用户。
 
 有效报告应尽量包含受影响版本、最小复现步骤、影响范围和不含真实秘密的测试样例。请仅在自己拥有或获准测试的环境中验证。
-
-账号 API 与桌面程序是独立部署部分。客户端仓库不包含生产服务器的密钥、用户数据或短信/邮件/OAuth 提供商凭据。

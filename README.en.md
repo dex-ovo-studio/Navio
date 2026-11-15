@@ -1,76 +1,37 @@
-<div align="center">
+<p align="center"><img align="top" src="https://raw.githubusercontent.com/dex-ovo-studio/Navio/main/.github/assets/ui/hero.svg" alt="Navio — 让连接与日常管理更清晰。 / Windows x64 · 1.0.0-beta.7 · 公开测试 / Public beta" width="100%"><a href="https://github.com/dex-ovo-studio/Navio/releases/tag/v1.0.0-beta.7"><img align="top" src="https://raw.githubusercontent.com/dex-ovo-studio/Navio/main/.github/assets/ui/action-1.svg" alt="版本与下载 / Release notes &amp; downloads" width="33.33%"></a><a href="https://github.com/dex-ovo-studio/Navio/blob/main/docs/guide.md"><img align="top" src="https://raw.githubusercontent.com/dex-ovo-studio/Navio/main/.github/assets/ui/action-2.svg" alt="使用指南 / Installation &amp; user guide" width="33.33%"></a><a href="https://github.com/dex-ovo-studio/DEX-Studio-Software-Status"><img align="top" src="https://raw.githubusercontent.com/dex-ovo-studio/Navio/main/.github/assets/ui/action-3.svg" alt="软件状态 / Software status &amp; support" width="33.33%"></a><img align="top" src="https://raw.githubusercontent.com/dex-ovo-studio/Navio/main/.github/assets/ui/experience.svg" alt="订阅与节点 · 代理与规则 · 连接与日志 · 主题与备份 / 安装与登录 · 导入配置 · 选择连接" width="100%"><a href="https://github.com/dex-ovo-studio/DEX-Studio-Software-Status"><img align="top" src="https://raw.githubusercontent.com/dex-ovo-studio/Navio/main/.github/assets/ui/footer.svg" alt="D.E.X Studio · 软件状态与下载 / Software status and downloads" width="100%"></a></p>
 
-<img src=".github/assets/navio-banner.svg" alt="Navio — D.E.X Studio Windows proxy client" width="100%">
+<a id="版本与下载--releases--downloads"></a>
 
-# Navio
+> **Beta 7 使用提醒 / Before you use Beta 7**  
+> 部分断开场景下，Windows 系统代理可能未恢复；相关修复尚未包含在当前安装包中。遇到问题请核对 Windows 代理设置，保留连接前已有的代理配置。  
+> System proxy restoration may fail after disconnecting. The fix is not included in these binaries; check Windows proxy settings and preserve any pre-existing configuration.
 
-[简体中文](README.md) · **English**
+Navio 不提供代理线路，订阅或配置需自行准备。升级前请备份配置并从托盘退出软件。  
+Bring your own subscription or profile. Back up settings and quit from the system tray before upgrading.
 
-**Clearer connections, configuration and everyday management.**
+[中文指南](https://github.com/dex-ovo-studio/Navio/blob/main/docs/guide.md) · [简体中文](https://github.com/dex-ovo-studio/Navio/blob/main/README.md) · [更新日志 / Changelog](https://github.com/dex-ovo-studio/Navio/blob/main/CHANGELOG.md) · [问题反馈 / Feedback](https://github.com/dex-ovo-studio/Navio/issues)
 
-Windows x64 proxy management · **1.0.0-beta.7 public beta**
+<details>
+<summary>文字版介绍与常用链接 / Accessible overview & links</summary>
 
-[Download Beta 7](https://github.com/dex-ovo-studio/Navio/releases/tag/v1.0.0-beta.7) · [User guide (中文)](docs/guide.md) · [Changelog](CHANGELOG.md) · [Software directory](https://github.com/dex-ovo-studio/DEX-Studio-Software-Status)
+Windows x64 · 1.0.0-beta.7 · 公开测试 / Public beta
 
-</div>
+- **订阅与节点**：导入配置，管理订阅与代理组。 Profiles, subscriptions and proxy groups.
+- **代理与规则**：系统代理、TUN 与分流规则。 System proxy, TUN and routing rules.
+- **连接与日志**：查看连接、流量与运行记录。 Connections, traffic and runtime logs.
+- **主题与备份**：调整外观，备份与恢复配置。 Personalise themes. Back up your setup.
 
----
+- [版本与下载 / Release notes & downloads](https://github.com/dex-ovo-studio/Navio/releases/tag/v1.0.0-beta.7)
+- [使用指南 / Installation & user guide](https://github.com/dex-ovo-studio/Navio/blob/main/docs/guide.md)
+- [软件状态 / Software status & support](https://github.com/dex-ovo-studio/DEX-Studio-Software-Status)
 
-## Overview
+</details>
 
-Navio brings subscriptions, proxy groups, routing rules, connection status and themes into one Windows workspace for clearer everyday connection management.
+<details>
+<summary>来源、许可与参与开发 / Credits, licence & contributing</summary>
 
-## Releases & downloads
+Navio 由 D.E.X Studio 开发，基于 [Clash Party](https://github.com/mihomo-party-org/clash-party) 与 [Mihomo](https://github.com/MetaCubeX/mihomo)，采用 [GPL-3.0-only](https://github.com/dex-ovo-studio/Navio/blob/main/LICENSE)。
 
-| Edition                   | Download                                                                                                                             | Use                                                |
-| :------------------------ | :----------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------- |
-| **Windows x64 installer** | [Setup.exe](https://github.com/dex-ovo-studio/Navio/releases/download/v1.0.0-beta.7/Navio-v1.0.0-beta.7-Windows-x64-setup.exe)       | Install for everyday use                           |
-| **Windows x64 portable**  | [Portable ZIP](https://github.com/dex-ovo-studio/Navio/releases/download/v1.0.0-beta.7/Navio-v1.0.0-beta.7-Windows-x64-portable.zip) | Extract the complete archive, then run `Navio.exe` |
+[第三方声明](https://github.com/dex-ovo-studio/Navio/blob/main/DEX-THIRD-PARTY-NOTICES.txt) · [对应源码](https://github.com/dex-ovo-studio/Navio/tree/main) · [构建与贡献](https://github.com/dex-ovo-studio/Navio/blob/main/CONTRIBUTING.md) · [安全报告](https://github.com/dex-ovo-studio/Navio/blob/main/SECURITY.md)
 
-[Release notes and checksums](https://github.com/dex-ovo-studio/Navio/releases/tag/v1.0.0-beta.7) · [All releases](https://github.com/dex-ovo-studio/Navio/releases)
-
-**This is a public beta, not the final 1.0 release.** These links point to the published Beta 7 binaries. There are currently no public Android, macOS or Linux installers.
-
-> **Known issue:** Windows system proxy settings may not be restored after disconnecting in some cases. A fix is still being validated and is not included in these published installers. Check Windows proxy settings if affected; preserve any proxy configuration that existed before using Navio.
-
-## Features & progress
-
-| Area                      | Capabilities                                                                                  |
-| :------------------------ | :-------------------------------------------------------------------------------------------- |
-| **Subscriptions & nodes** | Import profiles, manage subscriptions, switch proxy groups, favourite nodes and check latency |
-| **Proxy & rules**         | Enable system proxy or TUN as needed and manage routing rules                                 |
-| **Connections & logs**    | View connection status, traffic statistics and runtime logs                                   |
-| **Themes & appearance**   | Choose built-in themes or customise the interface through the theme workshop                  |
-| **Backup & updates**      | Back up and restore local configuration, and check for updates in the app                     |
-
-## Docs & support
-
-### Get started
-
-1. **Install and sign in** — Start Navio and sign in with a D.E.X account.
-2. **Add a profile** — Import your subscription URL or local configuration file.
-3. **Choose a connection** — Select a proxy group and node, then enable system proxy or TUN as needed.
-
-Navio does not supply proxy servers or subscriptions. Initial sign-in and online features require an internet connection; first-time TUN configuration may require administrator permission.
-
-Back up your configuration and quit Navio from the system tray before upgrading. See the [Chinese user guide](docs/guide.md) for data locations, migration and troubleshooting.
-
-### Documentation
-
-| Resource                                                              | Contents                                                       |
-| :-------------------------------------------------------------------- | :------------------------------------------------------------- |
-| [User guide (中文)](docs/guide.md)                                    | Installation, connection, upgrades, backup and troubleshooting |
-| [Changelog](CHANGELOG.md)                                             | Changes in released versions                                   |
-| [Issues](https://github.com/dex-ovo-studio/Navio/issues)              | Reproduction steps, usage issues and feature requests          |
-| [Build instructions](DEX-BUILD.txt) · [Contributing](CONTRIBUTING.md) | Development environment, builds and contribution process       |
-| [Security](SECURITY.md)                                               | Reporting security issues                                      |
-
-## Origins & licence
-
-Navio is developed by **D.E.X Studio**, based on [Clash Party](https://github.com/mihomo-party-org/clash-party) and [Mihomo](https://github.com/MetaCubeX/mihomo). The client is licensed under [GPL-3.0-only](LICENSE). See [third-party notices](DEX-THIRD-PARTY-NOTICES.txt) and [third-party](third-party) for component origins and licences.
-
-<div align="center">
-
-<sub>[D.E.X Studio](https://github.com/dex-ovo-studio) · [Software directory](https://github.com/dex-ovo-studio/DEX-Studio-Software-Status)</sub>
-
-</div>
+</details>
