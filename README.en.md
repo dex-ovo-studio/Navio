@@ -16,7 +16,11 @@ Windows x64 proxy management · **1.0.0-beta.7 public beta**
 
 ---
 
-## Download Navio
+## Overview
+
+Navio brings subscriptions, proxy groups, routing rules, connection status and themes into one Windows workspace for clearer everyday connection management.
+
+## Releases & downloads
 
 | Edition                   | Download                                                                                                                             | Use                                                |
 | :------------------------ | :----------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------- |
@@ -29,7 +33,7 @@ Windows x64 proxy management · **1.0.0-beta.7 public beta**
 
 > **Known issue:** Windows system proxy settings may not be restored after disconnecting in some cases. A fix is still being validated and is not included in these published installers. Check Windows proxy settings if affected; preserve any proxy configuration that existed before using Navio.
 
-## One workspace for everyday connections
+## Features & progress
 
 | Area                      | Capabilities                                                                                  |
 | :------------------------ | :-------------------------------------------------------------------------------------------- |
@@ -39,7 +43,9 @@ Windows x64 proxy management · **1.0.0-beta.7 public beta**
 | **Themes & appearance**   | Choose built-in themes or customise the interface through the theme workshop                  |
 | **Backup & updates**      | Back up and restore local configuration, and check for updates in the app                     |
 
-## Get started
+## Docs & support
+
+### Get started
 
 1. **Install and sign in** — Start Navio and sign in with a D.E.X account.
 2. **Add a profile** — Import your subscription URL or local configuration file.
@@ -49,7 +55,7 @@ Navio does not supply proxy servers or subscriptions. Initial sign-in and online
 
 Back up your configuration and quit Navio from the system tray before upgrading. See the [Chinese user guide](docs/guide.md) for data locations, migration and troubleshooting.
 
-## Documentation & support
+### Documentation
 
 | Resource                                                              | Contents                                                       |
 | :-------------------------------------------------------------------- | :------------------------------------------------------------- |
