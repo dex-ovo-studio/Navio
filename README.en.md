@@ -18,10 +18,10 @@ Windows x64 proxy management · **1.0.0-beta.7 public beta**
 
 ## Download Navio
 
-| Edition | Download | Use |
-| :--- | :--- | :--- |
-| **Windows x64 installer** | [Setup.exe](https://github.com/dex-ovo-studio/Navio/releases/download/v1.0.0-beta.7/Navio-v1.0.0-beta.7-Windows-x64-setup.exe) | Install for everyday use |
-| **Windows x64 portable** | [Portable ZIP](https://github.com/dex-ovo-studio/Navio/releases/download/v1.0.0-beta.7/Navio-v1.0.0-beta.7-Windows-x64-portable.zip) | Extract the complete archive, then run `Navio.exe` |
+| Edition                   | Download                                                                                                                             | Use                                                |
+| :------------------------ | :----------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------- |
+| **Windows x64 installer** | [Setup.exe](https://github.com/dex-ovo-studio/Navio/releases/download/v1.0.0-beta.7/Navio-v1.0.0-beta.7-Windows-x64-setup.exe)       | Install for everyday use                           |
+| **Windows x64 portable**  | [Portable ZIP](https://github.com/dex-ovo-studio/Navio/releases/download/v1.0.0-beta.7/Navio-v1.0.0-beta.7-Windows-x64-portable.zip) | Extract the complete archive, then run `Navio.exe` |
 
 [Release notes and checksums](https://github.com/dex-ovo-studio/Navio/releases/tag/v1.0.0-beta.7) · [All releases](https://github.com/dex-ovo-studio/Navio/releases)
 
@@ -31,13 +31,13 @@ Windows x64 proxy management · **1.0.0-beta.7 public beta**
 
 ## One workspace for everyday connections
 
-| Area | Capabilities |
-| :--- | :--- |
+| Area                      | Capabilities                                                                                  |
+| :------------------------ | :-------------------------------------------------------------------------------------------- |
 | **Subscriptions & nodes** | Import profiles, manage subscriptions, switch proxy groups, favourite nodes and check latency |
-| **Proxy & rules** | Enable system proxy or TUN as needed and manage routing rules |
-| **Connections & logs** | View connection status, traffic statistics and runtime logs |
-| **Themes & appearance** | Choose built-in themes or customise the interface through the theme workshop |
-| **Backup & updates** | Back up and restore local configuration, and check for updates in the app |
+| **Proxy & rules**         | Enable system proxy or TUN as needed and manage routing rules                                 |
+| **Connections & logs**    | View connection status, traffic statistics and runtime logs                                   |
+| **Themes & appearance**   | Choose built-in themes or customise the interface through the theme workshop                  |
+| **Backup & updates**      | Back up and restore local configuration, and check for updates in the app                     |
 
 ## Get started
 
@@ -51,13 +51,13 @@ Back up your configuration and quit Navio from the system tray before upgrading.
 
 ## Documentation & support
 
-| Resource | Contents |
-| :--- | :--- |
-| [User guide (中文)](docs/guide.md) | Installation, connection, upgrades, backup and troubleshooting |
-| [Changelog](CHANGELOG.md) | Changes in released versions |
-| [Issues](https://github.com/dex-ovo-studio/Navio/issues) | Reproduction steps, usage issues and feature requests |
-| [Build instructions](DEX-BUILD.txt) · [Contributing](CONTRIBUTING.md) | Development environment, builds and contribution process |
-| [Security](SECURITY.md) | Reporting security issues |
+| Resource                                                              | Contents                                                       |
+| :-------------------------------------------------------------------- | :------------------------------------------------------------- |
+| [User guide (中文)](docs/guide.md)                                    | Installation, connection, upgrades, backup and troubleshooting |
+| [Changelog](CHANGELOG.md)                                             | Changes in released versions                                   |
+| [Issues](https://github.com/dex-ovo-studio/Navio/issues)              | Reproduction steps, usage issues and feature requests          |
+| [Build instructions](DEX-BUILD.txt) · [Contributing](CONTRIBUTING.md) | Development environment, builds and contribution process       |
+| [Security](SECURITY.md)                                               | Reporting security issues                                      |
 
 ## Origins & licence
 
