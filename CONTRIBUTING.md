@@ -14,7 +14,6 @@
 
 开发分支为 `main`。默认 `showcase` 分支用于产品展示；提交代码修改时，请将 Pull Request 的目标设为 `main`。
 
-
 使用 Node.js 24+ 和 `package.json` 指定的 pnpm：
 
 ```powershell
