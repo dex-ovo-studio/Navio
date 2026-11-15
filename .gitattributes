@@ -8,3 +8,5 @@ docs/** export-ignore
 docs/guide.md -export-ignore
 design/ export-ignore
 scripts/service/IMPLEMENTATION-BOUNDARY.md export-ignore
+android/docs/** export-ignore
+design/** export-ignore

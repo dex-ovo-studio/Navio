@@ -20,6 +20,11 @@ const runners = [
 
 const checks = [
   {
+    name: 'Distribution Check',
+    command: 'run check:distribution',
+    help: 'Fix the distribution document boundaries before committing.'
+  },
+  {
     name: 'Format Check',
     command: 'run format:check',
     fixCommand: 'run format',

@@ -7,6 +7,7 @@
   "author": "D.E.X Studio and Clash Party contributors",
   "homepage": "https://github.com/poniard-li/Navio",
   "scripts": {
+    "check:distribution": "node scripts/check-distribution.cjs",
     "test": "vitest run",
     "test:watch": "vitest",
     "format": "prettier --write .",
@@ -14,7 +15,7 @@
     "hooks:install": "node scripts/install-git-hooks.mjs",
     "lint": "eslint . --ext .js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix",
     "lint:check": "eslint . --ext .js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts",
-    "review": "pnpm run format:check && pnpm run lint:check && pnpm run typecheck",
+    "review": "pnpm run check:distribution && pnpm run format:check && pnpm run lint:check && pnpm run typecheck",
     "typecheck:node": "tsc --noEmit -p tsconfig.node.json --composite false",
     "typecheck:web": "tsc --noEmit -p tsconfig.web.json --composite false",
     "typecheck": "pnpm run typecheck:node && pnpm run typecheck:web",

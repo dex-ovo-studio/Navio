@@ -9,6 +9,8 @@ files:
   - '!docs/**'
   - 'docs/guide.md'
   - '!design/**'
+  - '!android/**'
+  - '!tools/qa/**'
   - '!**/.vscode/*'
   - '!src/*'
   - '!aur/*'

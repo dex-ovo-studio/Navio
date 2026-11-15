@@ -6,6 +6,7 @@ const crypto = require('node:crypto')
 const asar = require('@electron/asar')
 const ResEdit = require('resedit')
 const PE = require('pe-library')
+const { publicDocuments } = require('./check-distribution.cjs')
 const root = path.resolve(__dirname, '..')
 const [referenceArg, outputArg, stageArg] = process.argv.slice(2)
 if (!referenceArg || !outputArg || !stageArg)
@@ -76,16 +77,7 @@ const hash = (p) => crypto.createHash('sha256').update(fss.readFileSync(p)).dige
   delete pkg.devDependencies
   delete pkg.scripts
   await fs.writeFile(path.join(appStage, 'package.json'), JSON.stringify(pkg, null, 2))
-  for (const file of [
-    'LICENSE',
-    'SECURITY.md',
-    'README.md',
-    'DEX-THIRD-PARTY-NOTICES.txt',
-    'DEX-BUILD.txt',
-    'NATIVE-BUILD.txt',
-    'PINNED-RESOURCES.json',
-    'docs/guide.md'
-  ]) {
+  for (const file of publicDocuments) {
     if (fss.existsSync(path.join(root, file))) {
       await fs.mkdir(path.dirname(path.join(appStage, file)), { recursive: true })
       await fs.copyFile(path.join(root, file), path.join(appStage, file))
@@ -188,16 +180,7 @@ const hash = (p) => crypto.createHash('sha256').update(fss.readFileSync(p)).dige
     path.join(output, 'DEX-BUILD-MANIFEST.json'),
     JSON.stringify(manifest, null, 2)
   )
-  for (const file of [
-    'LICENSE',
-    'SECURITY.md',
-    'README.md',
-    'DEX-THIRD-PARTY-NOTICES.txt',
-    'DEX-BUILD.txt',
-    'NATIVE-BUILD.txt',
-    'PINNED-RESOURCES.json',
-    'docs/guide.md'
-  ])
+  for (const file of publicDocuments)
     if (fss.existsSync(path.join(root, file))) {
       await fs.mkdir(path.dirname(path.join(output, file)), { recursive: true })
       await fs.copyFile(path.join(root, file), path.join(output, file))

@@ -21,6 +21,10 @@ jobs:
           cache: pnpm
       - name: Install locked dependencies without downloading runtime assets
         run: pnpm install --ignore-scripts --frozen-lockfile
+      - name: Distribution boundaries
+        run: |
+          pnpm run check:distribution
+          node --test scripts/check-distribution.test.cjs
       - name: Format
         run: pnpm run format:check
       - name: Lint
