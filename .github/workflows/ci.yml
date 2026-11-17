@@ -54,15 +54,19 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'Could not list source archive' }
           $required = @(
             'LICENSE', 'DEX-THIRD-PARTY-NOTICES.txt', 'DEX-BUILD.txt', 'NATIVE-BUILD.txt',
-            'package.json', 'pnpm-lock.yaml', 'scripts/build-native.mjs',
+            'package.json', 'pnpm-lock.yaml', 'electron.vite.config.ts', 'electron-builder.yml',
+            'tsconfig.json', 'tsconfig.node.json', 'tsconfig.web.json', 'scripts/build-native.mjs',
             'third-party/README.txt', 'third-party/SOURCE-ARCHIVES.json'
           )
           foreach ($path in $required) {
             if ($entries -cnotcontains $path) { throw "Source archive is missing $path" }
           }
-          $thirdParty = git ls-files -- third-party/
-          if ($LASTEXITCODE -ne 0) { throw 'Could not list tracked third-party materials' }
-          foreach ($path in $thirdParty) {
+          $buildInputs = @(git ls-files -- src/ resources/ build/ third-party/ scripts/)
+          if ($LASTEXITCODE -ne 0 -or -not ($buildInputs -clike 'src/*')) {
+            throw 'Could not list tracked application sources and build inputs'
+          }
+          foreach ($path in $buildInputs) {
+            if ($path -ceq 'scripts/service/IMPLEMENTATION-BOUNDARY.md') { continue }
             if ($entries -cnotcontains $path) { throw "Source archive is missing $path" }
           }
           $hash = (Get-FileHash -Algorithm SHA256 -LiteralPath $archive).Hash.ToLowerInvariant()

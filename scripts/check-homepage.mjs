@@ -104,6 +104,7 @@ function localImagePath(reference, root = ROOT) {
   // Remote badges are reported as unverified, never fetched. Only HTTPS is permitted.
   if (/^https:\/\//i.test(reference)) {
     const url = new URL(reference)
+    // eslint-disable-next-line no-control-regex -- Reject forbidden control characters in this input.
     if (url.username || url.password || /[\u0000-\u0020\\]/.test(reference))
       fail('IMAGE_URL', 'Ambiguous remote image URL')
     return null
@@ -116,6 +117,7 @@ function localImagePath(reference, root = ROOT) {
   }
   if (
     !decoded ||
+    // eslint-disable-next-line no-control-regex -- Reject forbidden control characters in this input.
     /[\u0000-\u001f\u007f\\:%?#]/.test(decoded) ||
     decoded.startsWith('/') ||
     decoded.split('/').some((part) => part === '..')
@@ -129,6 +131,7 @@ function localImagePath(reference, root = ROOT) {
 function inspectCss(value) {
   const css = value.replace(/\/\*[\s\S]*?\*\//g, '')
   if (
+    // eslint-disable-next-line no-control-regex -- Reject forbidden control characters in this input.
     /[\\\u0000-\u0008\u000b\u000c\u000e-\u001f]/.test(css) ||
     /@\s*(?:import|font-face)|(?:expression|(?:-webkit-)?image-set|image|src|paint)\s*\(|(?:javascript|data|https?|file)\s*:/i.test(
       css
