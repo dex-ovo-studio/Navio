@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="328" viewBox="0 0 480 328" role="img" aria-labelledby="title description">
+  <title id="title">Navio — Windows network and proxy management</title>
+  <desc id="description">Navio brand artwork in the existing navy and mint palette. This is not an application screenshot or a release announcement.</desc>
+  <!-- Logo paths and palette adapted from the project's V2 hero. See ASSET-SOURCES.md. -->
+  <defs>
+    <linearGradient id="surface" x2="1" y2="1"><stop stop-color="#081321"/><stop offset="1" stop-color="#102A3B"/></linearGradient>
+    <radialGradient id="glow"><stop stop-color="#70D7C1" stop-opacity=".18"/><stop offset="1" stop-color="#70D7C1" stop-opacity="0"/></radialGradient>
+    <linearGradient id="icon" x2="1" y2="1"><stop stop-color="#22354B"/><stop offset="1" stop-color="#101B2D"/></linearGradient>
+    <clipPath id="rounded"><rect width="480" height="328" rx="24"/></clipPath>
+  </defs>
+  <g clip-path="url(#rounded)">
+    <rect width="480" height="328" fill="url(#surface)"/>
+    <ellipse cx="450" cy="42" rx="240" ry="230" fill="url(#glow)"/>
+    <path d="M288 328a192 192 0 0 1 192-192M344 328a136 136 0 0 1 136-136M400 328a80 80 0 0 1 80-80" fill="none" stroke="#70D7C1" stroke-opacity=".12"/>
+    <rect x="30" y="30" width="4" height="19" rx="2" fill="#70D7C1"/>
+    <text x="47" y="47" font-family="Segoe UI,Arial,sans-serif" font-size="22" letter-spacing="1" fill="#B8CDD9">D.E.X STUDIO</text>
+    <g transform="translate(30 78) scale(.72)">
+      <rect x="4" y="4" width="120" height="120" rx="28" fill="url(#icon)"/>
+      <path d="M30 94V38C30 31 38 28 43 33L84 75V34H99V90C99 97 91 100 86 95L45 53V94Z" fill="#ECF7F4"/>
+      <path d="M84 34H99V90C99 97 91 100 86 95L72 81L84 69V75Z" fill="#6DD5BD"/>
+    </g>
+    <text x="140" y="145" font-family="Segoe UI,Arial,sans-serif" font-size="64" font-weight="700" fill="#F1F7FF">Navio</text>
+    <text x="32" y="217" font-family="Segoe UI,Microsoft YaHei,Arial,sans-serif" font-size="28" font-weight="600" fill="#F1F7FF">让连接与日常管理更清晰。</text>
+    <text x="32" y="257" font-family="Segoe UI,Arial,sans-serif" font-size="22" fill="#B8CDD9">Windows · Open source</text>
+    <path d="M32 283h50" stroke="#70D7C1" stroke-width="3" stroke-linecap="round"/>
+  </g>
+</svg>
