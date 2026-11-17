@@ -11,7 +11,12 @@ const publicDocuments = [
   'DEX-BUILD.txt',
   'NATIVE-BUILD.txt',
   'PINNED-RESOURCES.json',
-  'docs/guide.md'
+  'CHANGELOG.md',
+  'CONTRIBUTING.md',
+  'README.en.md',
+  'docs/guide.md',
+  'docs/install.md',
+  'docs/faq.md'
 ]
 
 function isInternal(file) {
@@ -19,7 +24,7 @@ function isInternal(file) {
     file === 'AGENTS.md' ||
     /^Navio-(验证记录|使用说明)\.txt$/.test(file) ||
     file === 'scripts/service/IMPLEMENTATION-BOUNDARY.md' ||
-    (/^(docs|design|android\/docs)\//.test(file) && file !== 'docs/guide.md')
+    (/^(docs|design|android\/docs)\//.test(file) && !publicDocuments.includes(file))
   )
 }
 

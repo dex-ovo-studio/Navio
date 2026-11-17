@@ -18,7 +18,14 @@ test('rejects internal archive entries and missing public documents', () => {
     assert.throws(() => checkDistribution(directory), /Internal source archive entry/)
     fs.writeFileSync(
       path.join(directory, '.gitattributes'),
-      'docs/** export-ignore\nandroid/docs/** export-ignore\ndocs/guide.md -export-ignore\n'
+      [
+        'docs/** export-ignore',
+        'android/docs/** export-ignore',
+        ...publicDocuments
+          .filter((file) => file.startsWith('docs/'))
+          .map((file) => file + ' -export-ignore'),
+        ''
+      ].join('\n')
     )
     assert.doesNotThrow(() => checkDistribution(directory))
     fs.unlinkSync(path.join(directory, 'LICENSE'))

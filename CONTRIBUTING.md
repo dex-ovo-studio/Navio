@@ -1,44 +1,34 @@
-<p><img align="top" src="https://raw.githubusercontent.com/dex-ovo-studio/Navio/main/.github/assets/ui/contributing.svg" alt="Navio · contributing" width="100%"></p>
+# 贡献指南 / Contributing
 
-[← Navio](https://github.com/dex-ovo-studio/Navio) · [使用指南](https://github.com/dex-ovo-studio/Navio/blob/main/docs/guide.md) · [版本与下载](https://github.com/dex-ovo-studio/Navio/releases)
+[项目首页 / Home](README.md) · [问题反馈 / Issues](https://github.com/dex-ovo-studio/Navio/issues) · [安全报告 / Security](https://github.com/dex-ovo-studio/Navio/blob/main/SECURITY.md)
 
-# 参与开发
+## 反馈问题 / Report an issue
 
-欢迎通过 Issue 提交问题和建议，通过 Pull Request 提交修改。
+请提供 Navio 与 Windows 版本、安装或便携方式、复现步骤、预期结果和实际结果。提交前移除订阅链接、节点密码、令牌和账号资料。安全问题按安全页面的私密流程报告。
 
-## 问题反馈
+Include the Navio and Windows versions, installer or portable mode, reproduction steps, and expected and actual results. Remove subscription links, node passwords, tokens, and account details. Use the private process on the security page for security reports.
 
-请提供 Navio 与 Windows 版本、复现步骤、预期结果和实际结果。日志和截图中不要包含订阅链接、节点密码、令牌或账号资料。安全漏洞请按 [SECURITY.md](SECURITY.md) 私下报告。
+## 提交变更 / Submit changes
 
-## 本地开发
+应用代码、README 和用户文档的 PR 均以 `main` 为目标。提交时说明行为变化和验证结果。更新双语文档时，保持中英文一致并核对链接及发行状态。
 
-开发分支为 `main`。默认 `showcase` 分支用于产品展示；提交代码修改时，请将 Pull Request 的目标设为 `main`。
+Target `main` for changes to the application, README and user documentation. Describe what changed and how you verified it. Keep bilingual documentation in sync and check links and release status.
 
-使用 Node.js 24+ 和 `package.json` 指定的 pnpm：
+## 本地开发 / Local development
+
+使用 Node.js 24+ 和 `package.json` 固定的 pnpm。 / Use Node.js 24+ and the pnpm version specified in `package.json`.
 
 ```powershell
 pnpm install --ignore-scripts --frozen-lockfile
 pnpm run hooks:install
-```
-
-运行资源和打包步骤见 [DEX-BUILD.txt](DEX-BUILD.txt)。依赖变更通过 pnpm 更新锁文件。
-
-提交前运行：
-
-```powershell
-pnpm run format:check
-pnpm run lint:check
-pnpm run typecheck
-```
-
-Windows 单元测试：
-
-```powershell
+pnpm run review
 pnpm exec vitest run --exclude src/main/utils/app-info/linux.test.ts
 ```
 
-Linux 路径相关测试在 Linux 上运行。系统代理、TUN、服务安装和升级需另做对应的运行验证。
+打包步骤见 [Windows 构建说明 / Windows build guide](DEX-BUILD.txt)。系统代理、TUN、服务和实际升级需要单独在 Windows 中验收。提交中保留第三方出处和许可，剔除依赖目录、构建产物与用户数据。
 
-## Pull Request
+See the Windows build guide for packaging. System proxy, TUN, service mode and upgrades need separate runtime verification on Windows. Keep third-party attributions and licenses, and keep dependencies, build output and user data out of commits.
 
-说明修改目的、行为变化和测试结果。保留来源及许可声明，不提交依赖目录、构建产物、个人配置或用户数据。提交钩子需正常通过。
+更新发行文档时，请核对该版本的软件包、对应源码、校验文件及随包第三方组件许可。
+
+When updating release documentation, check the version's binaries, corresponding source, checksums, and the licenses of bundled third-party components.

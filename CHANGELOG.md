@@ -1,6 +1,29 @@
-<p><img align="top" src="https://raw.githubusercontent.com/dex-ovo-studio/Navio/main/.github/assets/ui/changelog.svg" alt="Navio · changelog" width="100%"></p>
+# 更新日志 / Changelog
 
-[← Navio](https://github.com/dex-ovo-studio/Navio) · [使用指南](https://github.com/dex-ovo-studio/Navio/blob/main/docs/guide.md) · [版本与下载](https://github.com/dex-ovo-studio/Navio/releases)
+[项目首页 / Home](README.md) · [全部公开版本 / All published releases](https://github.com/dex-ovo-studio/Navio/releases) · [安装与文件校验 / Install and verify](docs/install.md)
+
+每个版本的完整变更记录与下载见对应 Release。查找随版本提供的对应源码时，以该页面列出的源码附件和校验清单为准。
+
+Each release has its own full notes and downloads. Use the corresponding source archive and checksum list identified on that release page.
+
+| 公开版本 / Published version | 发布说明与资产 / Notes and assets                                                                                                                                                                                                                                                                                                         | Git 标签 / Git tag                                                            |
+| ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| 1.0.0 Beta 7                 | [Release](https://github.com/dex-ovo-studio/Navio/releases/tag/v1.0.0-beta.7) · [对应源码 / Source rev2](https://github.com/dex-ovo-studio/Navio/releases/download/v1.0.0-beta.7/Navio-v1.0.0-beta.7-source-rev2.zip) · [校验清单 / SHA-256](https://github.com/dex-ovo-studio/Navio/releases/download/v1.0.0-beta.7/SHA256SUMS-rev2.txt) | [`v1.0.0-beta.7`](https://github.com/dex-ovo-studio/Navio/tree/v1.0.0-beta.7) |
+| 1.0.0 Beta 6                 | [Release](https://github.com/dex-ovo-studio/Navio/releases/tag/v1.0.0-beta.6)                                                                                                                                                                                                                                                             | [`v1.0.0-beta.6`](https://github.com/dex-ovo-studio/Navio/tree/v1.0.0-beta.6) |
+| 更早版本 / Earlier releases  | [发布历史 / Release history](https://github.com/dex-ovo-studio/Navio/releases)                                                                                                                                                                                                                                                            | [全部标签 / All tags](https://github.com/dex-ovo-studio/Navio/tags)           |
+
+## 1.0.0 Beta 7
+
+- 更新概览、代理组和主题工坊。 / Updated the overview, proxy groups, and theme workshop.
+- 改进日志暂停与主题下载。 / Improved log pausing and theme downloads.
+- 已知问题：部分断开场景下系统代理可能未恢复。 / Known issue: Windows proxy settings may remain changed after some disconnects.
+
+## 1.0.0 Beta 6
+
+- 支持安装版和便携版的应用内更新。 / Added in-app updates for installer and portable builds.
+- 增加 TUN 后台服务和临时管理员运行选项。 / Added TUN background service and run-as-administrator options.
+
+## 详细版本记录 / Detailed version history
 
 ## 1.0.0-beta.7
 
