@@ -16,29 +16,22 @@ Windows x64 · Open source · GPL-3.0-only
 [![License: GPL-3.0](https://img.shields.io/badge/License-GPL--3.0--only-blue.svg)](https://github.com/dex-ovo-studio/Navio/blob/main/LICENSE)
 [![Issues](https://img.shields.io/github/issues/dex-ovo-studio/Navio)](https://github.com/dex-ovo-studio/Navio/issues)
 
-**[下载 / Downloads](https://github.com/dex-ovo-studio/Navio/releases)** · **[安装指南 / Install](https://github.com/dex-ovo-studio/Navio/blob/main/docs/install.md)** · **[常见问题 / FAQ](https://github.com/dex-ovo-studio/Navio/blob/main/docs/faq.md)** · **[English](#english)**
+**[下载 Beta 7 / Download Beta 7](https://github.com/dex-ovo-studio/Navio/releases/tag/v1.0.0-beta.7)** · **[安装指南 / Install](https://github.com/dex-ovo-studio/Navio/blob/main/docs/install.md)** · **[常见问题 / FAQ](https://github.com/dex-ovo-studio/Navio/blob/main/docs/faq.md)** · **[English](#english)**
 
 </div>
 
 > [!IMPORTANT]
-> **下载前请先阅读版本说明。** 以 [GitHub Releases](https://github.com/dex-ovo-studio/Navio/releases) 中实际公开的版本和附件为准。未正式发布的 RC4、RC5、1.0 Stable **不可下载**，本页也不提供这些版本的安装包。
->
-> **Beta 7 已知风险：** 断开连接后，Windows 系统代理可能未正确恢复。升级前备份配置；断开连接或退出程序后，请核对 Windows 代理设置与日常联网状态。页面更新不表示此问题已经修复。
+> **Beta 7 已知问题：** 断开后，Windows 系统代理有时不会恢复。连接前记下原代理设置。若断开后无法正常联网，先从托盘退出 Navio，再到 **设置 → 网络和 Internet → 代理**恢复原设置，然后检查能否联网。
 
 ## 下载
 
-**[打开 GitHub Releases，选择已公开版本 →](https://github.com/dex-ovo-studio/Navio/releases)**
+**当前公开测试版：Windows x64 v1.0.0-beta.7。** 请先阅读[发行说明](https://github.com/dex-ovo-studio/Navio/releases/tag/v1.0.0-beta.7)。
 
-先阅读所选版本的发行说明与已知问题，再展开 **Assets（附件）**。Beta 7 提供安装版、便携版、源码和 SHA-256 校验资料；其他版本以各自实际附件为准。
+[安装版 EXE](https://github.com/dex-ovo-studio/Navio/releases/download/v1.0.0-beta.7/Navio-v1.0.0-beta.7-Windows-x64-setup.exe) · [便携版 ZIP](https://github.com/dex-ovo-studio/Navio/releases/download/v1.0.0-beta.7/Navio-v1.0.0-beta.7-Windows-x64-portable.zip) · [SHA-256 清单](https://github.com/dex-ovo-studio/Navio/releases/download/v1.0.0-beta.7/SHA256SUMS-rev2.txt)
 
-- **安装版：** 需要常规 Windows 安装流程时选择此项。
-- **Portable / 便携版：** 希望解压后运行时选择此项。请保留同一包内的配套文件。
-- **源码附件：** 用于阅读、审计或自行构建。请优先选择发行说明指定的版本与修订源码附件，以及配套的第三方源码附件。Beta 7 对应修订版源码附件（`source-rev2`）及第三方源码附件（`third-party-sources`）。GitHub 自动生成的 **Source code** 压缩包不等于已核验的完整对应源码；源码附件也不是可直接运行的 Windows 应用。
-- **SHA-256 校验文件：** 用于核对下载文件的摘要，本身不是安装包。运行前，按同一发布页提供的校验资料核对对应文件。
+运行前请按[安装与校验指南](https://github.com/dex-ovo-studio/Navio/blob/main/docs/install.md)核对文件。安装版运行 EXE；便携版完整解压后运行 `Navio.exe`。升级前请备份配置。
 
-应用安装包入口指向 Release 列表，供读者选择已公开的版本。
-
-[更新日志与源码 / Changelog and source](https://github.com/dex-ovo-studio/Navio/blob/main/CHANGELOG.md) · [项目维护状态](https://github.com/dex-ovo-studio/DEX-Studio-Software-Status)
+[历史版本](https://github.com/dex-ovo-studio/Navio/releases) · [项目维护状态](https://github.com/dex-ovo-studio/DEX-Studio-Software-Status)
 
 ## 功能范围
 
@@ -78,7 +71,7 @@ Navio 由 **D.E.X Studio** 开发，基于 [Clash Party](https://github.com/miho
 
 [GPL 许可证](https://github.com/dex-ovo-studio/Navio/blob/main/LICENSE) · [第三方声明](https://github.com/dex-ovo-studio/Navio/blob/main/DEX-THIRD-PARTY-NOTICES.txt) · [项目源码（main）](https://github.com/dex-ovo-studio/Navio/tree/main)
 
-[Beta 7 源码归档](https://github.com/dex-ovo-studio/Navio/releases/download/v1.0.0-beta.7/Navio-v1.0.0-beta.7-source-rev2.zip) · [按版本查找对应源码与校验清单](https://github.com/dex-ovo-studio/Navio/blob/main/CHANGELOG.md)
+[Beta 7 源码归档](https://github.com/dex-ovo-studio/Navio/releases/download/v1.0.0-beta.7/Navio-v1.0.0-beta.7-source-rev2.zip) · [第三方对应源码](https://github.com/dex-ovo-studio/Navio/releases/download/v1.0.0-beta.7/Navio-v0.3-v0.6-third-party-sources.zip) · [按版本查找对应源码与校验清单](https://github.com/dex-ovo-studio/Navio/blob/main/CHANGELOG.md)
 
 ---
 
@@ -86,25 +79,20 @@ Navio 由 **D.E.X Studio** 开发，基于 [Clash Party](https://github.com/miho
 
 Navio is an open-source Windows x64 client for managing network connections, proxy configurations and subscriptions.
 
-**[Published releases](https://github.com/dex-ovo-studio/Navio/releases)** · **[Install and verify](https://github.com/dex-ovo-studio/Navio/blob/main/docs/install.md)** · **[FAQ](https://github.com/dex-ovo-studio/Navio/blob/main/docs/faq.md)** · **[中文](#navio)**
+**[Download Beta 7](https://github.com/dex-ovo-studio/Navio/releases/tag/v1.0.0-beta.7)** · **[Install and verify](https://github.com/dex-ovo-studio/Navio/blob/main/docs/install.md)** · **[FAQ](https://github.com/dex-ovo-studio/Navio/blob/main/docs/faq.md)** · **[中文](#navio)**
 
 > [!IMPORTANT]
-> **Release status:** Only versions and assets published on [GitHub Releases](https://github.com/dex-ovo-studio/Navio/releases) are available for download. Unreleased RC4, RC5 and 1.0 Stable builds are **not available**. This page does not link to installers for those builds.
->
-> **Beta 7 advisory:** The Windows system proxy may not be restored correctly after disconnecting. Back up your configuration before upgrading, and check Windows proxy settings and normal internet access after disconnecting or exiting Navio. A homepage update does not mean this issue has been fixed.
+> **Beta 7 known issue:** Windows may keep the system proxy after disconnecting. Note your proxy settings before connecting. If internet access fails after disconnecting, quit Navio from the system tray, restore your previous settings under **Settings → Network & internet → Proxy**, and check your connection.
 
-### Choose your download
+### Download
 
-Open the [release index](https://github.com/dex-ovo-studio/Navio/releases), read the selected release's notes and known issues, then expand **Assets**. Beta 7 includes an installer, a portable package, source archives and SHA-256 checksums. Check the actual assets for any other release.
+**Current public beta: Windows x64 v1.0.0-beta.7.** Read the [release notes](https://github.com/dex-ovo-studio/Navio/releases/tag/v1.0.0-beta.7) first.
 
-- **Installer:** Choose this for a standard Windows installation.
-- **Portable:** Choose this to extract and run the app. Keep the files from the package together.
-- **Source assets:** For review, auditing or building the app yourself. Use the version and revision specified in the release notes, together with the accompanying third-party sources. For Beta 7, choose the revised source asset (`source-rev2`) and the third-party source asset (`third-party-sources`). GitHub's automatically generated **Source code** archives are not equivalent to verified complete corresponding source. Source archives are not ready-to-run Windows applications.
-- **SHA-256 file:** Use this to verify the matching download before running it. The checksum file itself is not an installer.
+[EXE installer](https://github.com/dex-ovo-studio/Navio/releases/download/v1.0.0-beta.7/Navio-v1.0.0-beta.7-Windows-x64-setup.exe) · [Portable ZIP](https://github.com/dex-ovo-studio/Navio/releases/download/v1.0.0-beta.7/Navio-v1.0.0-beta.7-Windows-x64-portable.zip) · [SHA-256 checksums](https://github.com/dex-ovo-studio/Navio/releases/download/v1.0.0-beta.7/SHA256SUMS-rev2.txt)
 
-The application download links lead to the release index, where you can choose a published version.
+Follow the [installation and verification guide](https://github.com/dex-ovo-studio/Navio/blob/main/docs/install.md) before running the file. Run the EXE to install, or fully extract the ZIP and run `Navio.exe`. Back up your configuration before upgrading.
 
-[Changelog and source](https://github.com/dex-ovo-studio/Navio/blob/main/CHANGELOG.md) · [Maintenance status](https://github.com/dex-ovo-studio/DEX-Studio-Software-Status)
+[Previous releases](https://github.com/dex-ovo-studio/Navio/releases) · [Maintenance status](https://github.com/dex-ovo-studio/DEX-Studio-Software-Status)
 
 ### Feature scope
 
@@ -127,7 +115,7 @@ Developed by **D.E.X Studio**, Navio is based on [Clash Party](https://github.co
 
 [License](https://github.com/dex-ovo-studio/Navio/blob/main/LICENSE) · [Third-party notices](https://github.com/dex-ovo-studio/Navio/blob/main/DEX-THIRD-PARTY-NOTICES.txt) · [Project source (main)](https://github.com/dex-ovo-studio/Navio/tree/main)
 
-[Beta 7 source archive](https://github.com/dex-ovo-studio/Navio/releases/download/v1.0.0-beta.7/Navio-v1.0.0-beta.7-source-rev2.zip) · [Source archives and checksums by version](https://github.com/dex-ovo-studio/Navio/blob/main/CHANGELOG.md)
+[Beta 7 source archive](https://github.com/dex-ovo-studio/Navio/releases/download/v1.0.0-beta.7/Navio-v1.0.0-beta.7-source-rev2.zip) · [Corresponding third-party sources](https://github.com/dex-ovo-studio/Navio/releases/download/v1.0.0-beta.7/Navio-v0.3-v0.6-third-party-sources.zip) · [Source archives and checksums by version](https://github.com/dex-ovo-studio/Navio/blob/main/CHANGELOG.md)
 
 ---
 
