@@ -14,6 +14,14 @@ Include the Navio and Windows versions, installer or portable mode, reproduction
 
 Target `main` for changes to the application, README and user documentation. Describe what changed and how you verified it. Keep bilingual documentation in sync and check links and release status.
 
+从 GitHub 展示页打开 PR 时，先把目标分支选为 `main`。如果误选 `showcase`，请改回 `main` 后再请求审查。也可在工作分支运行 `gh pr create --base main`。
+
+If you start a PR from the GitHub showcase, select `main` as the base. Retarget a PR opened against `showcase` before requesting review. For GitHub CLI, run `gh pr create --base main` from your topic branch.
+
+Windows CI 在发往 `main` 的 PR 和推送到 `main` 时运行。[查看 main 检查](https://github.com/dex-ovo-studio/Navio/actions/workflows/ci.yml?query=branch%3Amain)。
+
+Windows CI runs on PRs into `main` and pushes to `main`. [View main checks](https://github.com/dex-ovo-studio/Navio/actions/workflows/ci.yml?query=branch%3Amain).
+
 ## 本地开发 / Local development
 
 使用 Node.js 24+ 和 `package.json` 固定的 pnpm。 / Use Node.js 24+ and the pnpm version specified in `package.json`.
