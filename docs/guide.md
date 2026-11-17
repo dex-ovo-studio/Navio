@@ -1,12 +1,10 @@
 <p><img align="top" src="https://raw.githubusercontent.com/dex-ovo-studio/Navio/main/.github/assets/ui/guide.svg" alt="Navio · guide" width="100%"></p>
 
-[← Navio](https://github.com/dex-ovo-studio/Navio) · [使用指南](https://github.com/dex-ovo-studio/Navio/blob/main/docs/guide.md) · [版本与下载](https://github.com/dex-ovo-studio/Navio/releases)
-
-[返回 Navio](https://github.com/dex-ovo-studio/Navio) · [下载](https://github.com/dex-ovo-studio/Navio/releases/latest) · [问题反馈](https://github.com/dex-ovo-studio/Navio/issues)
+[返回 Navio](https://github.com/dex-ovo-studio/Navio) · [下载](https://github.com/dex-ovo-studio/Navio/releases/tag/v1.0.0-beta.7) · [问题反馈](https://github.com/dex-ovo-studio/Navio/issues)
 
 ## 安装与启动
 
-在 [Releases](https://github.com/dex-ovo-studio/Navio/releases) 下载 Windows x64 版本：
+在 [Beta 7 发行页](https://github.com/dex-ovo-studio/Navio/releases/tag/v1.0.0-beta.7)下载当前 Windows x64 公开测试版。运行前请按[安装与校验指南](install.md)核对文件。
 
 - **安装版**：运行文件名以 `setup.exe` 结尾的安装包。
 - **免安装版**：完整解压 `portable.zip`，再运行 `Navio.exe`。不要单独移动程序文件。
@@ -36,7 +34,7 @@
 
 ### 断开后系统代理未恢复
 
-Beta 7 在部分断开场景下可能没有恢复 Windows 代理设置。请核对 Windows“网络和 Internet → 代理”，保留连接前已有的配置。相关修复尚未包含在当前公开安装包中。
+Beta 7 断开后有时会保留 Windows 系统代理。若断开后无法联网，请按[常见问题](faq.md)中的步骤恢复连接前的设置。
 
 ### 没有可用节点
 
