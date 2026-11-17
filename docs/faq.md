@@ -4,15 +4,15 @@
 
 ## 到哪里下载和查找源码？ / Where are downloads and source?
 
-从 [GitHub Releases](https://github.com/dex-ovo-studio/Navio/releases) 选择版本。该版本的发布说明会列出下载和校验信息，并注明适用的源码附件与许可资料。
+从 [Beta 7 发行页](https://github.com/dex-ovo-studio/Navio/releases/tag/v1.0.0-beta.7)下载当前 Windows x64 公开测试版。发行说明列有校验、对应源码和许可资料；安装步骤见[安装指南](install.md)。
 
-Choose a version on GitHub Releases. Its release notes list download and checksum information and identify the applicable source archives and license materials.
+Download the current Windows x64 public beta from the [Beta 7 release page](https://github.com/dex-ovo-studio/Navio/releases/tag/v1.0.0-beta.7). The release notes list checksums, corresponding source archives, and license materials. See the [installation guide](install.md) for setup steps.
 
 ## Beta 7 断开后为什么仍有系统代理？ / Why is the system proxy still set after disconnecting in Beta 7?
 
-Beta 7 在部分断开场景下可能未恢复代理。请在 Windows **设置 → 网络和 Internet → 代理**核对状态，按连接前保存的配置恢复。更新前先备份 Navio 配置。
+Beta 7 断开后有时会保留 Windows 系统代理。连接前记下原代理设置。若断开后无法联网，先从托盘退出 Navio，再到 Windows **设置 → 网络和 Internet → 代理**恢复原设置，然后检查能否联网。
 
-Beta 7 may leave the proxy set after some disconnects. In Windows **Settings → Network & internet → Proxy**, check the state and restore the settings you saved before connecting. Back up your Navio configuration before updating.
+Beta 7 may leave the Windows system proxy in place after disconnecting. Note your proxy settings before connecting. If internet access fails after disconnecting, quit Navio from the system tray, restore your previous settings under **Settings → Network & internet → Proxy**, and check your connection.
 
 ## 没有可用节点怎么办？ / What if no nodes are available?
 
