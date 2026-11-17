@@ -9,6 +9,17 @@ import { fileURLToPath } from 'node:url'
 const ROOT = fileURLToPath(new URL('../', import.meta.url))
 const RELEASES = 'https://github.com/dex-ovo-studio/Navio/releases'
 const REPO = 'https://github.com/dex-ovo-studio/Navio'
+const PUBLIC_TAG = 'v1.0.0-beta.7'
+const PUBLIC_RELEASE = `${RELEASES}/tag/${PUBLIC_TAG}`
+const PUBLIC_ASSETS = new Set(
+  [
+    `Navio-${PUBLIC_TAG}-Windows-x64-setup.exe`,
+    `Navio-${PUBLIC_TAG}-Windows-x64-portable.zip`,
+    `Navio-${PUBLIC_TAG}-source-rev2.zip`,
+    'Navio-v0.3-v0.6-third-party-sources.zip',
+    'SHA256SUMS-rev2.txt'
+  ].map((name) => `${RELEASES}/download/${PUBLIC_TAG}/${name}`)
+)
 const XML_NAME = '[A-Za-z_][A-Za-z0-9_.:-]*'
 const TAG = /<(?:[^<>"']|"[^"]*"|'[^']*')*>/g
 const fail = (code, message) => {
@@ -253,13 +264,21 @@ function readmePolicy(markdown) {
       links.push({ label: match[2].replace(/<[^>]+>/g, ''), href: attrs.get('href') })
   }
   const downloads = links.filter(({ label }) =>
-    /下载|downloads?|published releases|release index|打开\s*GitHub Releases/i.test(label)
+    /下载|downloads?|published releases|release index|安装版|便携版|installer|portable\s+zip|^sha-256/i.test(
+      label
+    )
   )
-  if (!downloads.length || downloads.some(({ href }) => href !== RELEASES))
-    failures.push('DOWNLOAD_INDEX: All download entries must target the public releases index')
+  if (!downloads.some(({ href }) => href === PUBLIC_RELEASE))
+    failures.push('DOWNLOAD_RELEASE: Link the primary download to the official public Beta 7 tag')
+  if (downloads.some(({ href }) => href !== PUBLIC_RELEASE && !PUBLIC_ASSETS.has(href)))
+    failures.push('DOWNLOAD_TARGET: Download links must use the official public tag or its assets')
   for (const { href } of links) {
-    if (/\/releases\/(?:download|tag)\/[^/?#]*(?:rc[.\-_]?[45]|1\.0\.0(?:\/|$))/i.test(href))
-      failures.push('UNRELEASED_LINK: No RC4/RC5 or 1.0.0 stable download/tag claims')
+    if (
+      /\/releases\/(?:latest|download|tag)(?:[/\s?#]|$)/i.test(href) &&
+      href !== PUBLIC_RELEASE &&
+      !PUBLIC_ASSETS.has(href)
+    )
+      failures.push('UNRELEASED_LINK: Use only the approved release tag and assets on the homepage')
   }
   if (
     !/\bGPL-3\.0(?:-only)?\b/i.test(plain) ||
@@ -506,24 +525,35 @@ function selfTest() {
   ])
     test(`reject claim ${claim}`, () =>
       assert.ok(readmePolicy(claim).some((e) => e.startsWith('UNRELEASED_CLAIM'))))
-  test('download primary cannot pin an installer', () =>
+  test('official release and approved attachment are allowed', () =>
     assert.ok(
-      readmePolicy(`[下载](${RELEASES}/download/v1.0.0-beta.7/Navio.exe)`).some((e) =>
-        e.startsWith('DOWNLOAD_INDEX')
-      )
+      !readmePolicy(
+        `[Download](${PUBLIC_RELEASE})\n[Installer](${[...PUBLIC_ASSETS][0]})\n[Previous releases](${RELEASES})`
+      ).some((e) => /^(DOWNLOAD_|UNRELEASED_LINK)/.test(e))
     ))
-  test('reference download cannot pin an installer', () =>
+  test('floating primary download is rejected', () =>
     assert.ok(
-      readmePolicy(`[下载][pkg]\n[pkg]: ${RELEASES}/download/v1.0.0-beta.7/Navio.exe`).some((e) =>
-        e.startsWith('DOWNLOAD_INDEX')
-      )
+      readmePolicy(`[Downloads](${RELEASES})`).some((e) => e.startsWith('DOWNLOAD_RELEASE'))
     ))
-  test('reference download index is allowed', () =>
+  test('fixed reference download is allowed', () =>
     assert.ok(
-      !readmePolicy(`[Downloads][index]\n[index]: ${RELEASES}`).some((e) =>
+      !readmePolicy(`[Downloads][release]\n[release]: ${PUBLIC_RELEASE}`).some((e) =>
         e.startsWith('DOWNLOAD_')
       )
     ))
+  for (const href of [
+    `${RELEASES}/latest`,
+    `${RELEASES}/tag/v1.0.0-beta.8`,
+    `${RELEASES}/download/${PUBLIC_TAG}/Navio.exe`,
+    PUBLIC_RELEASE.replace('/dex-ovo-studio/', '/other-owner/'),
+    PUBLIC_RELEASE.replace('/Navio/', '/other-repo/')
+  ])
+    test(`reject unapproved release target ${href}`, () =>
+      assert.ok(
+        readmePolicy(`[Download](${PUBLIC_RELEASE})\n[Installer](${href})`).some((e) =>
+          e.startsWith('DOWNLOAD_TARGET')
+        )
+      ))
   test('unresolved reference download fails', () =>
     assert.ok(
       readmePolicy(`[Downloads][missing]\n[下载](${RELEASES})`).some((e) =>
