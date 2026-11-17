@@ -1,0 +1,20 @@
+name: Windows ASAR loader staging probe
+
+on:
+  push:
+    branches: [codex/navio-signed-build-prep-02-20261118]
+
+permissions:
+  contents: read
+
+jobs:
+  loader:
+    uses: ./.github/workflows/windows-electron-stage-evidence.yml
+    with:
+      reviewed_source_sha: ${{ github.sha }}
+      # This pin is for the isolated loader fixture. The job checks the installed lock.
+      electron_version: '43.8.0'
+      electron_zip_bytes: 151409636
+      electron_zip_sha256: 7d9854c412a12224e69eae191a0d7b673dc0903dbca040e3d35ed949ad70e5da
+      electron_exe_sha256: f4f2918c7d2d072c6d41ef409a7b8e03931e897f6f84c2cb3bd5bd5bd3e74ca3
+      fixture_only: true

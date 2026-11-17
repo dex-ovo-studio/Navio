@@ -1,0 +1,141 @@
+name: Windows official Electron stage evidence
+
+on:
+  workflow_call:
+    inputs:
+      reviewed_source_sha:
+        required: true
+        type: string
+      electron_version:
+        required: true
+        type: string
+      electron_zip_bytes:
+        required: true
+        type: number
+      electron_zip_sha256:
+        required: true
+        type: string
+      electron_exe_sha256:
+        required: true
+        type: string
+      fixture_only:
+        type: boolean
+        default: false
+    outputs:
+      artifact_id:
+        value: ${{ jobs.stage.outputs.artifact_id }}
+
+permissions:
+  contents: read
+
+jobs:
+  stage:
+    if: github.repository == 'dex-ovo-studio/Navio'
+    runs-on: windows-latest
+    timeout-minutes: 25
+    outputs:
+      artifact_id: ${{ steps.evidence.outputs.artifact-id }}
+    env:
+      REVIEWED_SOURCE_SHA: ${{ inputs.reviewed_source_sha }}
+    steps:
+      - name: Require the reviewed source commit
+        shell: pwsh
+        run: |
+          if ($env:REVIEWED_SOURCE_SHA -cnotmatch '^[a-f0-9]{40}$' -or $env:GITHUB_SHA -cne $env:REVIEWED_SOURCE_SHA) {
+            throw 'The workflow commit must be the reviewed source commit'
+          }
+
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          ref: ${{ inputs.reviewed_source_sha }}
+          persist-credentials: false
+      - uses: pnpm/action-setup@b906affcce14559ad1aafd4ab0e942779e9f58b1 # v4
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+
+      - name: Install the reviewed dependency lockfile
+        shell: pwsh
+        run: |
+          $package = Get-Content -Raw -LiteralPath package.json | ConvertFrom-Json
+          if ($package.packageManager -notmatch '^pnpm@(\d+\.\d+\.\d+)(?:\+.*)?$') { throw 'Pin an exact pnpm version' }
+          $expectedPnpm = $Matches[1]
+          $actualPnpm = pnpm --version
+          if ($LASTEXITCODE -ne 0 -or $actualPnpm -cne $expectedPnpm) { throw 'pnpm version mismatch' }
+          pnpm install --ignore-scripts --frozen-lockfile
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+      - name: Fetch and verify the official Electron archive
+        shell: pwsh
+        env:
+          ELECTRON_VERSION: ${{ inputs.electron_version }}
+          ELECTRON_BYTES: ${{ inputs.electron_zip_bytes }}
+          ELECTRON_ZIP_SHA256: ${{ inputs.electron_zip_sha256 }}
+          ELECTRON_EXE_SHA256: ${{ inputs.electron_exe_sha256 }}
+        run: |
+          if ($env:ELECTRON_VERSION -cnotmatch '^\d+\.\d+\.\d+$' -or
+              $env:ELECTRON_BYTES -notmatch '^[1-9]\d*$' -or
+              $env:ELECTRON_ZIP_SHA256 -cnotmatch '^[a-f0-9]{64}$' -or
+              $env:ELECTRON_EXE_SHA256 -cnotmatch '^[a-f0-9]{64}$') { throw 'Invalid official runtime pin' }
+          $archive = "electron-v$env:ELECTRON_VERSION-win32-x64.zip"
+          $url = "https://github.com/electron/electron/releases/download/v$env:ELECTRON_VERSION/$archive"
+          $path = Join-Path $env:RUNNER_TEMP $archive
+          Invoke-WebRequest -Uri $url -OutFile $path -TimeoutSec 300
+          if ((Get-Item -LiteralPath $path).Length -ne [long]$env:ELECTRON_BYTES -or
+              (Get-FileHash -LiteralPath $path -Algorithm SHA256).Hash -ine $env:ELECTRON_ZIP_SHA256) {
+            throw 'Official runtime ZIP does not match the reviewed pin'
+          }
+          $pin = [ordered]@{
+            version = $env:ELECTRON_VERSION
+            bytes = [long]$env:ELECTRON_BYTES
+            url = $url
+            sha256 = $env:ELECTRON_ZIP_SHA256
+            electronExeSha256 = $env:ELECTRON_EXE_SHA256
+          }
+          $pin | ConvertTo-Json | Set-Content -LiteralPath (Join-Path $env:RUNNER_TEMP 'electron-pin.json') -Encoding utf8
+          "NAVIO_ELECTRON_ARCHIVE=$path" | Add-Content -LiteralPath $env:GITHUB_ENV -Encoding utf8
+
+      - name: Build and audit the isolated diagnostic stage
+        if: ${{ !inputs.fixture_only }}
+        shell: pwsh
+        run: |
+          $emptyResources = Join-Path $env:RUNNER_TEMP 'navio-stage-no-resources'
+          New-Item -ItemType Directory -Path $emptyResources | Out-Null
+          $output = Join-Path $env:RUNNER_TEMP 'navio-stage-evidence'
+          node scripts/stage-official-electron.cjs $env:NAVIO_ELECTRON_ARCHIVE (Join-Path $env:RUNNER_TEMP 'electron-pin.json') $emptyResources $output $env:REVIEWED_SOURCE_SHA
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          $file = Join-Path $output 'electron-stage.json'
+          $evidence = Get-Content -Raw -LiteralPath $file | ConvertFrom-Json
+          if (-not $evidence.asarIntegrity.integrityFuse -or -not $evidence.asarIntegrity.asarOnlyFuse) {
+            throw 'Required ASAR protection not verified'
+          }
+          Copy-Item -LiteralPath $file -Destination (Join-Path $env:RUNNER_TEMP 'navio-build-evidence.json')
+          "Diagnostic stage for $env:REVIEWED_SOURCE_SHA. JSON evidence only." |
+            Add-Content -LiteralPath $env:GITHUB_STEP_SUMMARY -Encoding utf8
+
+      - name: Test the Windows loader with an inert Electron fixture
+        if: ${{ inputs.fixture_only }}
+        shell: pwsh
+        run: |
+          $workspace = Join-Path $env:RUNNER_TEMP 'navio-asar-loader-fixture'
+          node scripts/test-windows-asar-runtime.cjs $env:NAVIO_ELECTRON_ARCHIVE (Join-Path $env:RUNNER_TEMP 'electron-pin.json') $workspace
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          $result = Get-Content -Raw -LiteralPath (Join-Path $workspace 'runtime-readback.json') | ConvertFrom-Json
+          $report = [ordered]@{
+            workflowCommit = $env:GITHUB_SHA
+            runId = $env:GITHUB_RUN_ID
+            runnerImage = $env:ImageOS
+            runnerImageVersion = $env:ImageVersion
+            fixture = $result
+          }
+          $report | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath (Join-Path $env:RUNNER_TEMP 'navio-build-evidence.json') -Encoding utf8
+
+      - name: Upload evidence only
+        id: evidence
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: navio-${{ inputs.fixture_only && 'asar-loader-fixture' || 'electron-stage' }}-evidence-no-binaries
+          path: ${{ runner.temp }}/navio-build-evidence.json
+          if-no-files-found: error
+          retention-days: 14
