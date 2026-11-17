@@ -5,7 +5,7 @@
 # Navio
 
 **让连接与日常管理更清晰。**  
-*Clearer connections. Simpler everyday management.*
+_Clearer connections. Simpler everyday management._
 
 Windows x64 · Open source · GPL-3.0-only
 
@@ -24,24 +24,24 @@ Windows x64 · Open source · GPL-3.0-only
 
 ## 下载 / Download
 
-| 入口 / Destination | 内容 / Details |
-| --- | --- |
-| **[最新公开版本 / Published releases](https://github.com/dex-ovo-studio/Navio/releases)** | Windows 安装包、便携版及相关发布资料（以各版本实际资产为准） |
-| **[历史版本 / Release history](https://github.com/dex-ovo-studio/Navio/releases)** | 已公开的 Beta、RC、Stable 版本及变更说明 |
-| **[更新日志 / Changelog](./CHANGELOG.md)** | 版本变更与已知问题 |
-| **[软件状态 / Project status](https://github.com/dex-ovo-studio/DEX-Studio-Software-Status)** | 维护与支持信息 |
+| 入口 / Destination                                                                            | 内容 / Details                                               |
+| --------------------------------------------------------------------------------------------- | ------------------------------------------------------------ |
+| **[最新公开版本 / Published releases](https://github.com/dex-ovo-studio/Navio/releases)**     | Windows 安装包、便携版及相关发布资料（以各版本实际资产为准） |
+| **[历史版本 / Release history](https://github.com/dex-ovo-studio/Navio/releases)**            | 历次公开版本及发行说明                                       |
+| **[更新日志 / Changelog](./CHANGELOG.md)**                                                    | 版本变更与已知问题                                           |
+| **[软件状态 / Project status](https://github.com/dex-ovo-studio/DEX-Studio-Software-Status)** | 维护与支持信息                                               |
 
 **注意：** README 的下载入口指向动态 Release 列表，避免在发布新版本后仍错误链接旧安装包。请核对发布者、版本说明、文件 SHA-256 和许可证资料。  
 **Note:** Download links point to the live release index, not an unreleased or hard-coded build.
 
 ## 核心功能 / Features
 
-| 模块 / Module | 功能 / Capabilities |
-| --- | --- |
-| 订阅与节点 / Profiles & nodes | 导入配置、管理订阅与代理组 |
-| 代理与规则 / Proxy & rules | 系统代理、TUN 和分流规则（以实际版本支持情况为准） |
-| 连接与日志 / Connections & logs | 查看连接、流量与运行记录 |
-| 外观与备份 / Themes & backups | 调整主题、备份和恢复配置 |
+| 模块 / Module                   | 功能 / Capabilities                                |
+| ------------------------------- | -------------------------------------------------- |
+| 订阅与节点 / Profiles & nodes   | 导入配置、管理订阅与代理组                         |
+| 代理与规则 / Proxy & rules      | 系统代理、TUN 和分流规则（以实际版本支持情况为准） |
+| 连接与日志 / Connections & logs | 查看连接、流量与运行记录                           |
+| 外观与备份 / Themes & backups   | 调整主题、备份和恢复配置                           |
 
 ## 产品预览 / Preview
 
@@ -72,7 +72,7 @@ Navio 由 **D.E.X Studio** 开发，基于 [Clash Party](https://github.com/miho
 查看某个版本的源码时，请打开该版本的发行页，核对同版本源码、构建材料及第三方声明。  
 For a specific version, start from its release page and check its matching source, build materials and third-party notices.
 
-[Beta 7 发行记录 / Beta 7 release](https://github.com/dex-ovo-studio/Navio/releases/tag/v1.0.0-beta.7) · [Beta 7 源码标签 / Beta 7 source tag](https://github.com/dex-ovo-studio/Navio/tree/v1.0.0-beta.7)
+[Beta 7 发行记录 / Beta 7 release](https://github.com/dex-ovo-studio/Navio/releases/tag/v1.0.0-beta.7) · [Beta 7 源码归档 / Beta 7 source archive](https://github.com/dex-ovo-studio/Navio/releases/download/v1.0.0-beta.7/Navio-v1.0.0-beta.7-source-rev2.zip) · [源码标签 / Source tag](https://github.com/dex-ovo-studio/Navio/tree/v1.0.0-beta.7)
 
 ---
 
