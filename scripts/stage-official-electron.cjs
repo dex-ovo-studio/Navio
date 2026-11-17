@@ -71,6 +71,8 @@ async function stage(archiveArg, pinArg, resourcesArg, outputArg, sourceCommit) 
   if (!(await fs.stat(resources)).isDirectory()) {
     throw new Error('Approved resources must be a directory')
   }
+  const { assertPayloadTree, assertPayloadPaths } = require('./windows-payload-exclusions.cjs')
+  await assertPayloadTree(resources)
   const outputParent = await fs.realpath(path.dirname(path.resolve(outputArg)))
   const output = path.join(outputParent, path.basename(outputArg))
   const source = await fs.realpath(root)
@@ -83,10 +85,12 @@ async function stage(archiveArg, pinArg, resourcesArg, outputArg, sourceCommit) 
   if (!VERSION.test(pkg.version) || pkg.license !== 'GPL-3.0-only') {
     throw new Error('Expected a versioned GPL-3.0-only Navio package')
   }
-  const previousBuild = await fs.lstat(path.join(root, 'out')).catch((error) => {
-    if (error.code !== 'ENOENT') throw error
-  })
-  if (previousBuild) throw new Error('Use a clean checkout without existing build output')
+  for (const directory of ['out', 'extra']) {
+    const previous = await fs.lstat(path.join(root, directory)).catch((error) => {
+      if (error.code !== 'ENOENT') throw error
+    })
+    if (previous) throw new Error(`Use a clean checkout without a local ${directory} directory`)
+  }
 
   // Fresh run directory ensures electron-builder finds only the verified ZIP.
   await fs.mkdir(output)
@@ -109,11 +113,16 @@ async function stage(archiveArg, pinArg, resourcesArg, outputArg, sourceCommit) 
         electronDist: distribution,
         productName: 'Navio',
         forceCodeSigning: false,
+        electronFuses: {
+          enableEmbeddedAsarIntegrityValidation: true,
+          onlyLoadAppFromAsar: true
+        },
         directories: { output: payloadRoot },
+        files: ['package.json', 'out/**/*', 'resources/**/*'],
         extraResources: [{ from: resources, to: '.', filter: ['**/*'] }],
         extraFiles: [{ from: root, to: '.', filter: ['LICENSE', 'DEX-THIRD-PARTY-NOTICES.txt'] }],
-        // Preserve the Electron launcher upstream bytes. It is not a Navio signing target.
-        win: { signAndEditExecutable: false },
+        // The builder may add ASAR integrity metadata. The launcher derives from Electron.
+        win: { signAndEditExecutable: false, signExecutable: false },
         publish: []
       }
     })
@@ -123,16 +132,33 @@ async function stage(archiveArg, pinArg, resourcesArg, outputArg, sourceCommit) 
   }
 
   const payload = path.join(payloadRoot, 'win-unpacked')
-  if ((await sha256(path.join(payload, 'Navio.exe'))) !== pin.electronExeSha256) {
-    throw new Error('The staged launcher is not the approved upstream Electron executable')
+  const asar = require('@electron/asar')
+  const appArchive = path.join(payload, 'resources', 'app.asar')
+  const entry = path.posix.normalize((pkg.main || '').replaceAll('\\', '/'))
+  if (
+    !entry.startsWith('out/main/') ||
+    !asar.extractFile(appArchive, entry.split('/').join(path.sep)).length
+  ) {
+    throw new Error('Packaged application entry is missing or empty')
   }
-  await fs.access(path.join(payload, 'resources', 'app.asar'))
+  await assertPayloadTree(payload)
+  assertPayloadPaths(asar.listPackage(appArchive))
+  const { verifyWindowsAsar } = require('./verify-windows-asar-integrity.cjs')
+  const asarIntegrity = await verifyWindowsAsar(path.join(payload, 'Navio.exe'), appArchive)
   const evidence = {
     sourceCommit,
     version: pkg.version,
     runtime: pin,
     payload: 'app/win-unpacked',
-    launcher: { path: 'Navio.exe', source: 'upstream Electron', signingScope: 'exclude' },
+    launcher: {
+      path: 'Navio.exe',
+      origin: 'electron-derived',
+      upstreamSha256: pin.electronExeSha256,
+      stagedSha256: await sha256(path.join(payload, 'Navio.exe')),
+      signingScope: 'exclude'
+    },
+    appAsarSha256: await sha256(appArchive),
+    asarIntegrity,
     status: 'unpacked-staging-only; requires payload policy verification before packaging'
   }
   await fs.writeFile(
@@ -154,6 +180,9 @@ if (require.main === module) {
     stage(...args).catch((error) => {
       console.error(error.message)
       process.exitCode = 1
+      process.on('exit', () => {
+        process.exitCode = 1
+      })
     })
   }
 }

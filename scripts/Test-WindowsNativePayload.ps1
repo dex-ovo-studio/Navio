@@ -70,7 +70,7 @@ foreach ($entry in $policy.nativeFiles) {
     $name = [string] $entry['path']
     Assert-RelativeFilePath $name
     if ($approved.ContainsKey($name) -or
-        $entry['origin'] -cnotin @('electron-upstream', 'third-party', 'navio-built') -or
+        $entry['origin'] -cnotin @('electron-upstream', 'electron-derived', 'third-party', 'navio-built') -or
         [string]::IsNullOrWhiteSpace($entry['source']) -or
         [string]::IsNullOrWhiteSpace($entry['licenseEvidence'])) {
         throw "Invalid or duplicate native policy entry: $name"
@@ -81,6 +81,9 @@ foreach ($entry in $policy.nativeFiles) {
         }
     } elseif ($entry['sha256'] -notmatch '^[a-f0-9]{64}$' -or $entry['signingScope'] -cne 'exclude') {
         throw "Upstream file requires an approved hash and exclusion from Navio signing: $name"
+    }
+    if ($entry['origin'] -ceq 'electron-derived' -and $entry['upstreamSha256'] -notmatch '^[a-f0-9]{64}$') {
+        throw "Electron-derived launcher requires its exact upstream digest: $name"
     }
     $approved[$name] = $entry
 }
