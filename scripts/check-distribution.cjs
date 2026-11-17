@@ -16,7 +16,10 @@ const publicDocuments = [
   'README.en.md',
   'docs/guide.md',
   'docs/install.md',
-  'docs/faq.md'
+  'docs/faq.md',
+  '.github/assets/ui/v2/content.svg',
+  '.github/assets/ui/v4/hero-desktop.svg',
+  '.github/assets/ui/v4/hero-mobile.svg'
 ]
 
 function isInternal(file) {
