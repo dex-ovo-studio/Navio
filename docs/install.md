@@ -1,12 +1,14 @@
 # Windows 安装与升级 / Install and update on Windows
 
-[项目首页 / Home](../README.md) · [公开版本 / Releases](https://github.com/dex-ovo-studio/Navio/releases) · [常见问题 / FAQ](faq.md)
+[项目首页 / Home](../README.md) · [Beta 7 发行说明 / Beta 7 release notes](https://github.com/dex-ovo-studio/Navio/releases/tag/v1.0.0-beta.7) · [常见问题 / FAQ](faq.md)
 
 ## 选择软件包 / Choose a package
 
-在 [GitHub Releases](https://github.com/dex-ovo-studio/Navio/releases) 打开所选版本，阅读已知问题，并在附件中选择 Windows x64 安装包或便携包。
+当前公开测试版为 Windows x64 v1.0.0-beta.7。先读[发行说明](https://github.com/dex-ovo-studio/Navio/releases/tag/v1.0.0-beta.7)，再下载[安装版 EXE](https://github.com/dex-ovo-studio/Navio/releases/download/v1.0.0-beta.7/Navio-v1.0.0-beta.7-Windows-x64-setup.exe)或[便携版 ZIP](https://github.com/dex-ovo-studio/Navio/releases/download/v1.0.0-beta.7/Navio-v1.0.0-beta.7-Windows-x64-portable.zip)。
 
-Open your chosen release on GitHub, read the known issues, and choose the Windows x64 installer or portable package from its assets.
+The current Windows x64 public beta is v1.0.0-beta.7. Read the [release notes](https://github.com/dex-ovo-studio/Navio/releases/tag/v1.0.0-beta.7), then download the [EXE installer](https://github.com/dex-ovo-studio/Navio/releases/download/v1.0.0-beta.7/Navio-v1.0.0-beta.7-Windows-x64-setup.exe) or [portable ZIP](https://github.com/dex-ovo-studio/Navio/releases/download/v1.0.0-beta.7/Navio-v1.0.0-beta.7-Windows-x64-portable.zip).
+
+断开后无法联网时，请参阅[恢复 Windows 代理设置](faq.md)。 / If internet access fails after disconnecting, see [how to restore Windows proxy settings](faq.md).
 
 | 软件包 / Package    | 启动方式 / How to start                                                                                                                |
 | ------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
@@ -23,9 +25,9 @@ In PowerShell, replace the example filename with the file you downloaded and cal
 Get-FileHash -Algorithm SHA256 -LiteralPath '.\Navio-v1.0.0-beta.7-Windows-x64-portable.zip'
 ```
 
-对照同一个 Release 的校验清单，确认文件名和完整摘要一致。若不一致，请停止运行该文件，从所选 Release 重新下载。
+对照 [Beta 7 的 SHA-256 清单](https://github.com/dex-ovo-studio/Navio/releases/download/v1.0.0-beta.7/SHA256SUMS-rev2.txt)，确认文件名和完整摘要一致。若不一致，请停止运行该文件，从所选 Release 重新下载。
 
-Compare the filename and full digest with the checksum list on the same release. If they differ, stop and download the file again from the selected release.
+Compare the filename and full digest with the [Beta 7 checksum list](https://github.com/dex-ovo-studio/Navio/releases/download/v1.0.0-beta.7/SHA256SUMS-rev2.txt). If they differ, stop and download the file again from the selected release.
 
 ## 升级与恢复 / Update and recovery
 
