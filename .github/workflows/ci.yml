@@ -13,9 +13,11 @@ jobs:
   windows:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v6
-      - uses: pnpm/action-setup@v4
-      - uses: actions/setup-node@v6
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - uses: pnpm/action-setup@b906affcce14559ad1aafd4ab0e942779e9f58b1 # v4
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
         with:
           node-version: 24
           cache: pnpm
@@ -24,7 +26,12 @@ jobs:
       - name: Distribution boundaries
         run: |
           pnpm run check:distribution
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           node --test scripts/check-distribution.test.cjs
+      - name: Test the homepage checker
+        run: node scripts/check-homepage.mjs --self-test
+      - name: Verify homepage artwork and download links
+        run: node scripts/check-homepage.mjs
       - name: Format
         run: pnpm run format:check
       - name: Lint
@@ -34,4 +41,37 @@ jobs:
       - name: Windows unit tests
         run: pnpm exec vitest run --exclude src/main/utils/app-info/linux.test.ts
       - name: Windows packaging checks
-        run: node --test scripts/release-windows.test.cjs scripts/release-windows-safety.test.cjs
+        run: |
+          node --test scripts/release-windows.test.cjs scripts/release-windows-safety.test.cjs scripts/verify-release-windows.test.cjs
+      - name: Compile desktop source
+        run: node scripts/build-native.mjs
+      - name: Check corresponding source contents and record SHA-256
+        shell: pwsh
+        run: |
+          $archive = Join-Path $env:RUNNER_TEMP 'navio-ci-source.tar'
+          git archive --format=tar --output=$archive HEAD
+          if ($LASTEXITCODE -ne 0) { throw 'Could not create source archive' }
+          $entries = tar -tf $archive
+          if ($LASTEXITCODE -ne 0) { throw 'Could not list source archive' }
+          $required = @(
+            'LICENSE', 'DEX-THIRD-PARTY-NOTICES.txt', 'DEX-BUILD.txt', 'NATIVE-BUILD.txt',
+            'package.json', 'pnpm-lock.yaml', 'pnpm-workspace.yaml',
+            'electron.vite.config.ts', 'electron-builder.yml',
+            'tsconfig.json', 'tsconfig.node.json', 'tsconfig.web.json', 'scripts/build-native.mjs',
+            'third-party/README.txt', 'third-party/SOURCE-ARCHIVES.json'
+          )
+          foreach ($path in $required) {
+            if ($entries -cnotcontains $path) { throw "Source archive is missing $path" }
+          }
+          $buildInputs = @(git ls-files -- src/ resources/ build/ third-party/ scripts/ patches/)
+          if ($LASTEXITCODE -ne 0 -or -not ($buildInputs -clike 'src/*')) {
+            throw 'Could not list tracked application sources and build inputs'
+          }
+          foreach ($path in $buildInputs) {
+            if ($path -ceq 'scripts/service/IMPLEMENTATION-BOUNDARY.md') { continue }
+            if ($entries -cnotcontains $path) { throw "Source archive is missing $path" }
+          }
+          $hash = (Get-FileHash -Algorithm SHA256 -LiteralPath $archive).Hash.ToLowerInvariant()
+          $commit = git rev-parse HEAD
+          if ($LASTEXITCODE -ne 0) { throw 'Could not identify source commit' }
+          "Source archive (CI tar, $commit) SHA-256: $hash" >> $env:GITHUB_STEP_SUMMARY

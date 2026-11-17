@@ -6,6 +6,8 @@ Navio-验证记录.txt export-ignore
 Navio-使用说明.txt export-ignore
 docs/** export-ignore
 docs/guide.md -export-ignore
+docs/install.md -export-ignore
+docs/faq.md -export-ignore
 design/ export-ignore
 scripts/service/IMPLEMENTATION-BOUNDARY.md export-ignore
 android/docs/** export-ignore
