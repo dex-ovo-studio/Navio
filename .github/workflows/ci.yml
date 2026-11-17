@@ -55,14 +55,15 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'Could not list source archive' }
           $required = @(
             'LICENSE', 'DEX-THIRD-PARTY-NOTICES.txt', 'DEX-BUILD.txt', 'NATIVE-BUILD.txt',
-            'package.json', 'pnpm-lock.yaml', 'electron.vite.config.ts', 'electron-builder.yml',
+            'package.json', 'pnpm-lock.yaml', 'pnpm-workspace.yaml',
+            'electron.vite.config.ts', 'electron-builder.yml',
             'tsconfig.json', 'tsconfig.node.json', 'tsconfig.web.json', 'scripts/build-native.mjs',
             'third-party/README.txt', 'third-party/SOURCE-ARCHIVES.json'
           )
           foreach ($path in $required) {
             if ($entries -cnotcontains $path) { throw "Source archive is missing $path" }
           }
-          $buildInputs = @(git ls-files -- src/ resources/ build/ third-party/ scripts/)
+          $buildInputs = @(git ls-files -- src/ resources/ build/ third-party/ scripts/ patches/)
           if ($LASTEXITCODE -ne 0 -or -not ($buildInputs -clike 'src/*')) {
             throw 'Could not list tracked application sources and build inputs'
           }
