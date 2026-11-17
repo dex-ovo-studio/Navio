@@ -18,6 +18,9 @@ on:
       electron_exe_sha256:
         required: true
         type: string
+      fixture_only:
+        type: boolean
+        default: false
     outputs:
       artifact_id:
         value: ${{ jobs.stage.outputs.artifact_id }}
@@ -94,6 +97,7 @@ jobs:
           "NAVIO_ELECTRON_ARCHIVE=$path" | Add-Content -LiteralPath $env:GITHUB_ENV -Encoding utf8
 
       - name: Build and audit the isolated diagnostic stage
+        if: ${{ !inputs.fixture_only }}
         shell: pwsh
         run: |
           $emptyResources = Join-Path $env:RUNNER_TEMP 'navio-stage-no-resources'
@@ -106,14 +110,32 @@ jobs:
           if (-not $evidence.asarIntegrity.integrityFuse -or -not $evidence.asarIntegrity.asarOnlyFuse) {
             throw 'Required ASAR protection not verified'
           }
+          Copy-Item -LiteralPath $file -Destination (Join-Path $env:RUNNER_TEMP 'navio-build-evidence.json')
           "Diagnostic stage for $env:REVIEWED_SOURCE_SHA. JSON evidence only." |
             Add-Content -LiteralPath $env:GITHUB_STEP_SUMMARY -Encoding utf8
+
+      - name: Test the Windows loader with an inert Electron fixture
+        if: ${{ inputs.fixture_only }}
+        shell: pwsh
+        run: |
+          $workspace = Join-Path $env:RUNNER_TEMP 'navio-asar-loader-fixture'
+          node scripts/test-windows-asar-runtime.cjs $env:NAVIO_ELECTRON_ARCHIVE (Join-Path $env:RUNNER_TEMP 'electron-pin.json') $workspace
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          $result = Get-Content -Raw -LiteralPath (Join-Path $workspace 'runtime-readback.json') | ConvertFrom-Json
+          $report = [ordered]@{
+            workflowCommit = $env:GITHUB_SHA
+            runId = $env:GITHUB_RUN_ID
+            runnerImage = $env:ImageOS
+            runnerImageVersion = $env:ImageVersion
+            fixture = $result
+          }
+          $report | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath (Join-Path $env:RUNNER_TEMP 'navio-build-evidence.json') -Encoding utf8
 
       - name: Upload evidence only
         id: evidence
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
-          name: navio-official-electron-stage-evidence-no-binaries
-          path: ${{ runner.temp }}/navio-stage-evidence/electron-stage.json
+          name: navio-${{ inputs.fixture_only && 'asar-loader-fixture' || 'electron-stage' }}-evidence-no-binaries
+          path: ${{ runner.temp }}/navio-build-evidence.json
           if-no-files-found: error
           retention-days: 14
