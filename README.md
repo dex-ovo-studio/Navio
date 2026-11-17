@@ -36,7 +36,7 @@ Windows x64 · Open source · GPL-3.0-only
 - **源码附件：** 用于阅读、审计或自行构建。请优先选择发行说明指定的版本与修订源码附件，以及配套的第三方源码附件。Beta 7 对应修订版源码附件（`source-rev2`）及第三方源码附件（`third-party-sources`）。GitHub 自动生成的 **Source code** 压缩包不等于已核验的完整对应源码；源码附件也不是可直接运行的 Windows 应用。
 - **SHA-256 校验文件：** 用于核对下载文件的摘要，本身不是安装包。运行前，按同一发布页提供的校验资料核对对应文件。
 
-所有下载入口均指向 Release 列表，不固定到可能过时的安装包，也不链接尚未发布的构建。
+应用安装包入口指向 Release 列表，供读者选择已公开的版本。
 
 [更新日志与源码 / Changelog and source](CHANGELOG.md) · [项目维护状态](https://github.com/dex-ovo-studio/DEX-Studio-Software-Status)
 
@@ -102,7 +102,7 @@ Open the [release index](https://github.com/dex-ovo-studio/Navio/releases), read
 - **Source assets:** For review, auditing or building the app yourself. Use the version and revision specified in the release notes, together with the accompanying third-party sources. For Beta 7, choose the revised source asset (`source-rev2`) and the third-party source asset (`third-party-sources`). GitHub's automatically generated **Source code** archives are not equivalent to verified complete corresponding source. Source archives are not ready-to-run Windows applications.
 - **SHA-256 file:** Use this to verify the matching download before running it. The checksum file itself is not an installer.
 
-Download links lead to the release index rather than a fixed installer or an unpublished build.
+The application download links lead to the release index, where you can choose a published version.
 
 [Changelog and source](CHANGELOG.md) · [Maintenance status](https://github.com/dex-ovo-studio/DEX-Studio-Software-Status)
 

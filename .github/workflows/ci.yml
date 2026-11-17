@@ -26,11 +26,12 @@ jobs:
       - name: Distribution boundaries
         run: |
           pnpm run check:distribution
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           node --test scripts/check-distribution.test.cjs
+      - name: Test the homepage checker
+        run: node scripts/check-homepage.mjs --self-test
       - name: Verify homepage artwork and download links
-        run: |
-          node scripts/check-homepage.mjs --self-test
-          node scripts/check-homepage.mjs
+        run: node scripts/check-homepage.mjs
       - name: Format
         run: pnpm run format:check
       - name: Lint
